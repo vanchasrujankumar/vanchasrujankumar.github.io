@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srujan Vancha | Lead Data Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1557b0;
+      --accent: #34d399;
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a2e;
+      --text: #e2e8f0;
+      --text-muted: #8892b0;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #1a73e8, #34d399);
+      --gradient-2: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* Animated background */
+    .bg-grid {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(26, 115, 232, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 115, 232, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+    }
+    .bg-glow {
+      position: fixed; top: -20%; left: -10%; width: 60%; height: 60%;
+      background: radial-gradient(circle, rgba(26,115,232,0.08) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 10s ease-in-out infinite;
+    }
+    .bg-glow-2 {
+      position: fixed; bottom: -20%; right: -10%; width: 50%; height: 50%;
+      background: radial-gradient(circle, rgba(52,211,153,0.06) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite reverse;
+    }
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.3s;
+    }
+    nav.hidden { transform: translateY(-100%); }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 1.25rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--gradient-1); transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 0.5rem 1.25rem; border-radius: 8px;
+      background: var(--gradient-1); color: white !important;
+      font-weight: 600; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(26,115,232,0.3); }
+    .nav-cta::after { display: none !important; }
+
+    /* Sections */
+    section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2rem; font-weight: 700; margin-bottom: 3rem;
+    }
+    .section-title span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 5rem; position: relative;
+    }
+    .hero-content { max-width: 800px; }
+    .hero-greeting {
+      font-size: 1rem; color: var(--accent); font-weight: 500;
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-greeting .wave {
+      display: inline-block; animation: wave 2s infinite;
+    }
+    @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 50% { transform: rotate(-10deg); } 75% { transform: rotate(5deg); } }
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
+      line-height: 1.1; margin-bottom: 0.5rem;
+    }
+    .hero-name .gradient {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text-muted);
+      font-weight: 400; margin-bottom: 1.5rem;
+    }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 600px; margin-bottom: 2.5rem; line-height: 1.8;
+    }
+    .hero-badges { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-badge {
+      padding: 0.4rem 1rem; border-radius: 20px;
+      background: rgba(26, 115, 232, 0.1); border: 1px solid rgba(26, 115, 232, 0.2);
+      font-size: 0.85rem; color: var(--primary); font-weight: 500;
+      transition: all 0.3s;
+    }
+    .hero-badge:hover { background: rgba(26, 115, 232, 0.2); transform: translateY(-2px); }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: 0.85rem 2rem; border-radius: 10px; font-weight: 600;
+      font-size: 0.95rem; cursor: pointer; transition: all 0.3s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--gradient-1); color: white;
+      box-shadow: 0 4px 15px rgba(26,115,232,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(26,115,232,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex; gap: 3rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+    }
+    .stat-item { }
+    .stat-number {
+      font-size: 2rem; font-weight: 700;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Experience */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 3rem; padding-left: 2rem;
+      opacity: 0; transform: translateX(-20px);
+      transition: all 0.6s ease-out;
+    }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.6rem; top: 0.5rem;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--primary); border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .timeline-item.current::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent), 0 0 20px rgba(52,211,153,0.3); }
+    .timeline-header { margin-bottom: 0.75rem; }
+    .timeline-role {
+      font-size: 1.1rem; font-weight: 600; color: var(--text);
+    }
+    .timeline-company {
+      font-size: 0.9rem; color: var(--primary); font-weight: 500;
+    }
+    .timeline-date {
+      font-size: 0.8rem; color: var(--text-muted); font-family: 'Fira Code', monospace;
+      margin-top: 0.25rem;
+    }
+    .timeline-details { list-style: none; }
+    .timeline-details li {
+      position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem;
+      font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .timeline-details li::before {
+      content: '▹'; position: absolute; left: 0;
+      color: var(--primary); font-size: 0.85rem;
+    }
+    .timeline-tech {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
+    }
+    .timeline-tech span {
+      padding: 0.2rem 0.75rem; border-radius: 4px;
+      background: rgba(26,115,232,0.08);
+      font-size: 0.75rem; color: var(--primary); font-family: 'Fira Code', monospace;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+    .skill-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem; text-align: center;
+      transition: all 0.4s; cursor: default;
+      opacity: 0; transform: translateY(20px);
+    }
+    .skill-card.visible { opacity: 1; transform: translateY(0); }
+    .skill-card:hover {
+      border-color: var(--primary); transform: translateY(-5px) !important;
+      box-shadow: 0 10px 30px rgba(26,115,232,0.1);
+    }
+    .skill-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .skill-name { font-size: 0.85rem; font-weight: 600; }
+    .skill-level {
+      margin-top: 0.5rem; height: 3px; border-radius: 2px;
+      background: var(--border); overflow: hidden;
+    }
+    .skill-level-fill {
+      height: 100%; border-radius: 2px;
+      background: var(--gradient-1); width: 0;
+      transition: width 1.2s ease;
+    }
+
+    /* Certifications */
+    .certs-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .cert-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem;
+      transition: all 0.3s;
+      opacity: 0; transform: translateY(20px);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .cert-card.visible { opacity: 1; transform: translateY(0); }
+    .cert-card:hover { border-color: var(--primary); transform: translateY(-3px) !important; }
+    .cert-icon { font-size: 1.5rem; }
+    .cert-name { font-size: 0.85rem; font-weight: 500; line-height: 1.4; }
+
+    /* Contact */
+    .contact-section { text-align: center; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 1rem 1.5rem; border-radius: 12px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      transition: all 0.3s;
+    }
+    .contact-card:hover {
+      border-color: var(--primary); transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26,115,232,0.15);
+    }
+    .contact-card-icon { font-size: 1.5rem; }
+    .contact-card-label { font-size: 0.8rem; color: var(--text-muted); }
+    .contact-card-value { font-size: 0.9rem; font-weight: 500; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.25rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .stats-bar { gap: 1.5rem; flex-wrap: wrap; }
+      .stat-number { font-size: 1.5rem; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .certs-grid { grid-template-columns: 1fr; }
+      .timeline { padding-left: 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">SV</div>
+      <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-greeting"><span class="wave">👋</span> Hello, I'm</div>
+      <h1 class="hero-name"><span class="gradient">Srujan Vancha</span></h1>
+      <div class="hero-title">Lead Data Engineer · Big Data · GCP · AI</div>
+      <p class="hero-desc">
+        10+ years architecting large-scale data platforms across Retail, Banking, and AdTech.
+        Building data lakes, real-time streaming pipelines, and AI-powered solutions on Google Cloud Platform.
+        Currently at <strong style="color:var(--accent)">Target (Roundel)</strong>.
+      </p>
+      <div class="hero-badges">
+        <span class="hero-badge">GCP</span>
+        <span class="hero-badge">Databricks</span>
+        <span class="hero-badge">Spark</span>
+        <span class="hero-badge">PySpark</span>
+        <span class="hero-badge">Scala</span>
+        <span class="hero-badge">Kafka</span>
+        <span class="hero-badge">BigQuery</span>
+        <span class="hero-badge">Gen AI</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">View Experience ↓</a>
+        <a href="mailto:vanchasrujankumar@gmail.com" class="btn btn-outline">Email Me</a>
+      </div>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="7">0</div>
+          <div class="stat-label">Roles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Cloud Platforms</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">/<span>Experience</span></h2>
+    <div class="timeline">
+
+      <div class="timeline-item current">
+        <div class="timeline-header">
+          <div class="timeline-role">Lead Engineer - Roundel Audiences</div>
+          <div class="timeline-company">Target</div>
+          <div class="timeline-date">Apr 2025 — Present · Austin, TX</div>
+        </div>
+        <ul class="timeline-details">
+          <li>Enhanced Audience Segmentation Tools – Improved performance and scalability of Target's audience segmentation platform, reducing processing latency and increasing throughput for large-scale campaigns.</li>
+          <li>Privacy Compliance Enablement – Implemented state-specific privacy law support (VA, TX, WA) to ensure compliance before sharing audience data with social partners.</li>
+          <li>Roundel Assist Chatbot Development – Designed and developed an internal AI-powered assistant using Target's proprietary LLM integrated with GPT-4.0 and Gemini 2.0.</li>
+          <li>DevOps Automation Enhancements – Improved CI/CD pipelines enabling faster, more reliable continuous integration testing and zero-downtime deployments.</li>
+          <li>Security Compliance Automation – Developed automated remediation workflows for SCA and SCE issues.</li>
+          <li>Cloud Migration to GCP – Leading migration of segmentation tools to Google Cloud Platform, leveraging BigQuery, GCS, Cloud Functions, and Terraform.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>GCP</span><span>BigQuery</span><span>GPT-4</span><span>Gemini</span><span>React</span><span>Terraform</span><span>Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div class="timeline-role">Lead Data Engineer - Roundel Data Foundations</div>
+          <div class="timeline-company">Target</div>
+          <div class="timeline-date">Apr 2019 — Apr 2025 · Austin, TX</div>
+        </div>
+        <ul class="timeline-details">
+          <li>Enhanced Data Matching Accuracy – Led initiatives to improve external identification processes, increasing match rates by 20%.</li>
+          <li>Vendor Ecosystem Integration – Integrated with leading external vendors (LiveRamp, Neustar, Xander, TTD, Google), expanding targeting capabilities.</li>
+          <li>Ad Targeting Optimization – Leveraged CleanRooms and Signal Sharing to refine ad targeting precision, delivering a 15% boost in campaign effectiveness.</li>
+          <li>Advanced Measurement Analytics – Built analytics pipelines to close the loop on marketing performance metrics.</li>
+          <li>Data Pipeline & ETL Development – Designed scalable pipelines supporting real-time and batch data integration.</li>
+          <li>Automation for Efficiency – Automated high-volume repetitive workflows using Python and Scala.</li>
+          <li>Microservices Architecture – Architected and deployed microservices solutions improving modularity and scalability.</li>
+          <li>Containerization & Deployment – Utilized Docker and Kubernetes to standardize environments.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>PySpark</span><span>Scala</span><span>Databricks</span><span>Kafka</span><span>Docker</span><span>Kubernetes</span><span>LiveRamp</span><span>TTD</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div class="timeline-role">Senior Data Engineer - Marketing Data Platform</div>
+          <div class="timeline-company">Target</div>
+          <div class="timeline-date">Sep 2017 — Apr 2019 · Minneapolis, MN</div>
+        </div>
+        <ul class="timeline-details">
+          <li>DevOps Enablement – Implemented robust CI/CD pipelines to accelerate deployment cycles.</li>
+          <li>Big Data Management – Managed large-scale datasets enforcing strict data quality standards.</li>
+          <li>Business Intelligence – Designed DOMO dashboards to track key business metrics.</li>
+          <li>High-Performance Analytics – Leveraged BigQuery for high-speed querying and near real-time insights.</li>
+          <li>Real-Time Ingestion – Implemented Apache Druid for real-time ingestion and interactive querying.</li>
+          <li>Streaming Infrastructure – Integrated Apache Kafka for real-time data streaming pipelines.</li>
+          <li>Scalable Processing – Developed distributed processing workflows in PySpark and Spark Scala.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>BigQuery</span><span>Druid</span><span>Kafka</span><span>Spark</span><span>DOMO</span><span>StreamSets</span><span>Jupyter</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div class="timeline-role">Senior Marketing Analyst / Senior Data Engineer</div>
+          <div class="timeline-company">Target</div>
+          <div class="timeline-date">Jun 2016 — Sep 2017 · Minneapolis, MN</div>
+        </div>
+        <ul class="timeline-details">
+          <li>Search Engine Marketing – Managed Google AdWords campaigns, improving CTR and conversion metrics.</li>
+          <li>Data Lake Engineering – Designed enterprise-scale data lake pipelines on GCP and AWS S3.</li>
+          <li>Predictive Modeling – Created analytics modules for audience forecasting and churn prediction.</li>
+          <li>CI/CD Implementation – Built Jenkins-driven CI/CD pipelines for marketing analytics jobs.</li>
+          <li>Workflow Orchestration – Automated workflows using Oozie, Airflow, Ansible, Docker, and Kubernetes.</li>
+          <li>Data Visualization – Built interactive dashboards in Domo and Tableau for campaign tracking.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>GCP</span><span>AWS</span><span>Hive</span><span>Spark</span><span>Oozie</span><span>Jenkins</span><span>Tableau</span><span>AdWords</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div class="timeline-role">Big Data Engineer</div>
+          <div class="timeline-company">Morgan Stanley</div>
+          <div class="timeline-date">Feb 2015 — May 2016 · New York City Metro Area</div>
+        </div>
+        <ul class="timeline-details">
+          <li>Recommendation Engine – Enhanced recommendation components for personalized wealth management insights.</li>
+          <li>Enterprise Data Lake – Built Hadoop-based pipelines using Sqoop, Hive, Spark, Pig, Kafka, Storm, HBase, Solr, Impala.</li>
+          <li>Analytical Dashboards – Developed QlikView dashboards for portfolio performance and risk analysis.</li>
+          <li>ML for Client Insights – Applied K-Means Clustering for client segmentation.</li>
+          <li>CI/CD Enablement – Utilized Jenkins and TeamCity for automated build, test, and deployment.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>Hadoop</span><span>Spark</span><span>Kafka</span><span>HBase</span><span>QlikView</span><span>K-Means</span><span>Teradata</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div class="timeline-role">Intern</div>
+          <div class="timeline-company">Mindagile Consulting</div>
+          <div class="timeline-date">Jul 2014 — Dec 2014 · Greater Houston</div>
+        </div>
+        <ul class="timeline-details">
+          <li>Built "Know Your Medicine" iOS app for symptom-based medicine lookup and doctor recommendations.</li>
+          <li>Integrated FDA APIs for real-time medical data and geolocation for nearby providers.</li>
+        </ul>
+        <div class="timeline-tech">
+          <span>iOS</span><span>Swift</span><span>Java</span><span>SQL</span><span>REST APIs</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">/<span>Skills</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">GCP</div><div class="skill-level"><div class="skill-level-fill" data-width="95"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">BigQuery</div><div class="skill-level"><div class="skill-level-fill" data-width="95"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔥</div><div class="skill-name">Databricks</div><div class="skill-level"><div class="skill-level-fill" data-width="90"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">💻</div><div class="skill-name">Scala</div><div class="skill-level"><div class="skill-level-fill" data-width="85"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><div class="skill-level"><div class="skill-level-fill" data-width="90"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">PySpark</div><div class="skill-level"><div class="skill-level-fill" data-width="95"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔮</div><div class="skill-name">Spark</div><div class="skill-level"><div class="skill-level-fill" data-width="90"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📨</div><div class="skill-name">Kafka</div><div class="skill-level"><div class="skill-level-fill" data-width="80"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🐳</div><div class="skill-name">Docker</div><div class="skill-level"><div class="skill-level-fill" data-width="85"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">☸️</div><div class="skill-name">Kubernetes</div><div class="skill-level"><div class="skill-level-fill" data-width="80"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🏗️</div><div class="skill-name">Terraform</div><div class="skill-level"><div class="skill-level-fill" data-width="75"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🧠</div><div class="skill-name">Gen AI / LLM</div><div class="skill-level"><div class="skill-level-fill" data-width="70"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">Apache Hive</div><div class="skill-level"><div class="skill-level-fill" data-width="85"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-name">Apache Druid</div><div class="skill-level"><div class="skill-level-fill" data-width="75"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔗</div><div class="skill-name">Airflow</div><div class="skill-level"><div class="skill-level-fill" data-width="75"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🔄</div><div class="skill-name">Jenkins</div><div class="skill-level"><div class="skill-level-fill" data-width="80"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📦</div><div class="skill-name">AWS</div><div class="skill-level"><div class="skill-level-fill" data-width="80"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">🟦</div><div class="skill-name">Azure</div><div class="skill-level"><div class="skill-level-fill" data-width="75"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">📡</div><div class="skill-name">Trino</div><div class="skill-level"><div class="skill-level-fill" data-width="70"></div></div></div>
+      <div class="skill-card"><div class="skill-icon">👁️</div><div class="skill-name">Grafana</div><div class="skill-level"><div class="skill-level-fill" data-width="70"></div></div></div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">/<span>Certifications</span></h2>
+    <div class="certs-grid">
+      <div class="cert-card"><div class="cert-icon">☁️</div><div class="cert-name">Google Cloud Professional Data Engineer</div></div>
+      <div class="cert-card"><div class="cert-icon">🤖</div><div class="cert-name">Generative AI for Everyone — DeepLearning.AI</div></div>
+      <div class="cert-card"><div class="cert-icon">🧠</div><div class="cert-name">Building GenAI Apps with Python — IBM</div></div>
+      <div class="cert-card"><div class="cert-icon">💡</div><div class="cert-name">Introduction to Artificial Intelligence (Honors) — IBM</div></div>
+      <div class="cert-card"><div class="cert-icon">📋</div><div class="cert-name">Foundations of Project Management — Google</div></div>
+      <div class="cert-card"><div class="cert-icon">📊</div><div class="cert-name">Processing Big Data with Azure Data Lake Analytics — Microsoft</div></div>
+      <div class="cert-card"><div class="cert-icon">⚡</div><div class="cert-name">Apache Spark — MapR</div></div>
+      <div class="cert-card"><div class="cert-icon">📨</div><div class="cert-name">Apache Kafka — IBM</div></div>
+      <div class="cert-card"><div class="cert-icon">📈</div><div class="cert-name">Marketing Foundations — The Trade Desk</div></div>
+      <div class="cert-card"><div class="cert-icon">🔍</div><div class="cert-name">Google DoubleClick Search Certification</div></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <div class="section-label">Connect</div>
+    <h2 class="section-title">/<span>Get In Touch</span></h2>
+    <p style="color:var(--text-muted); max-width:500px; margin: 0 auto;">
+      Open to discussing data engineering challenges, AdTech opportunities, or anything GCP and Spark related.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/srujan-data-cloud-engineer/" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-card-icon">💼</span>
+        <div><div class="contact-card-label">LinkedIn</div><div class="contact-card-value">Srujan Vancha</div></div>
+      </a>
+      <a href="mailto:vanchasrujankumar@gmail.com" class="contact-card">
+        <span class="contact-card-icon">✉️</span>
+        <div><div class="contact-card-label">Email</div><div class="contact-card-value">vanchasrujankumar@gmail.com</div></div>
+      </a>
+      <a href="https://github.com/vanchasrujankumar" class="contact-card" target="_blank" rel="noopener">
+        <span class="contact-card-icon">🐙</span>
+        <div><div class="contact-card-label">GitHub</div><div class="contact-card-value">vanchasrujankumar</div></div>
+      </a>
+      <a href="#" class="contact-card" onclick="navigator.clipboard.writeText('Austin, TX'); return false;">
+        <span class="contact-card-icon">📍</span>
+        <div><div class="contact-card-label">Location</div><div class="contact-card-value">Austin, TX</div></div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Srujan Vancha. Built with care.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Animate skill bars
+          if (entry.target.classList.contains('skill-card')) {
+            const fill = entry.target.querySelector('.skill-level-fill');
+            if (fill) fill.style.width = fill.dataset.width + '%';
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in, .timeline-item, .skill-card, .cert-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar hide/show on scroll
+    let lastScroll = 0;
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY;
+      navbar.classList.toggle('hidden', current > lastScroll && current > 100);
+      lastScroll = current;
+    });
+
+    // Animated counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          let current = 0;
+          const increment = Math.ceil(target / 40);
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = current + '+';
+          }, 40);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(el => counterObserver.observe(el));
+
+    // Smooth reveal staggering for timeline items
+    document.querySelectorAll('.timeline-item').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.1) + 's';
+    });
+    document.querySelectorAll('.skill-card').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.03) + 's';
+    });
+    document.querySelectorAll('.cert-card').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.05) + 's';
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-# vanchasrujankumar.github.io
+# Portfolio Site
 
-Personal portfolio site for Srujan Vancha — Lead Data Engineer.
+Personal portfolio site — Lead Data Engineer.
 Live at: **https://vanchasrujankumar.github.io**
 
 ---
@@ -138,15 +138,15 @@ Changes are deployed automatically via GitHub Actions on every push to `main`.
 # Make your edits to index.html, then:
 git add index.html srujan.jpeg   # add only the files you changed
 git commit -m "your message"
-GIT_COMMITTER_EMAIL="272043308+vanchasrujankumar@users.noreply.github.com" \
-GIT_COMMITTER_NAME="Srujan Vancha" \
-git commit --amend --author="Srujan Vancha <272043308+vanchasrujankumar@users.noreply.github.com>" --no-edit
+GIT_COMMITTER_EMAIL="<your-noreply-email>" \
+GIT_COMMITTER_NAME="<your-name>" \
+git commit --amend --author="<your-name> <<your-noreply-email>>" --no-edit
 git push origin main
 ```
 
 > **Why the special push?** GitHub's email-privacy setting blocks pushes that expose your personal email.
 > The no-reply address format is: `{GitHub_user_id}+{username}@users.noreply.github.com`
-> Your ID is `272043308`.
+> Find your ID at: https://api.github.com/users/{your-username}
 
 Check deploy status: https://github.com/vanchasrujankumar/vanchasrujankumar.github.io/actions
 

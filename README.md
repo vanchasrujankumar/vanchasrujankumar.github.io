@@ -9,7 +9,7 @@ Live at: **https://vanchasrujankumar.github.io**
 
 ```
 ├── index.html       # Single-file site — all HTML, CSS, and JS inline
-├── srujan.jpeg      # Headshot photo (cropped to face)
+├── srujan.jpeg      # Headshot photo (professional headshot)
 ├── renovate.json    # Dependency auto-update config
 └── .github/
     └── workflows/

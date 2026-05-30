@@ -351,6 +351,23 @@
     .clink-s { background: white; border: 1px solid var(--border); color: var(--text-sec); box-shadow: var(--shadow); }
     .clink-s:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
+    /* ── WRITING ── */
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .article-card {
+      background: white; border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; transition: all 0.25s; display: flex; flex-direction: column;
+      box-shadow: var(--shadow); text-decoration: none; color: inherit;
+    }
+    .article-card:hover { border-color: rgba(37,99,235,0.25); transform: translateY(-4px); box-shadow: var(--shadow-lg); color: inherit; }
+    .article-meta { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .article-date, .article-read { font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .article-read::before { content: '·'; margin-right: 0.75rem; }
+    .article-title { font-size: 0.97rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.6rem; font-family: 'Space Grotesk', sans-serif; }
+    .article-desc { font-size: 0.81rem; color: var(--text-sec); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem; }
+    .article-tag { padding: 0.12rem 0.45rem; border-radius: 4px; background: rgba(37,99,235,0.07); border: 1px solid rgba(37,99,235,0.15); font-size: 0.67rem; color: var(--accent); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .article-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; font-weight: 600; color: var(--accent); margin-top: auto; }
+
     footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.76rem; color: var(--text-muted); border-top: 1px solid var(--border); }
     footer a { color: var(--text-muted); }
     footer a:hover { color: var(--accent); }
@@ -386,6 +403,7 @@
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
       <a href="#certs">Certs</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
@@ -837,6 +855,63 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="container">
+    <div class="section-label">Writing</div>
+    <h2 class="section-title">Medium Articles</h2>
+    <p class="section-sub">Deep-dives on AdTech, marketing analytics, and data strategy.</p>
+
+    <div class="articles-grid">
+
+      <a href="https://medium.com/@vanchasrujankumar/marketing-mix-modeling-mmm-vs-multi-touch-attribution-mta-which-one-should-you-use-04f9b9a1a053"
+         target="_blank" rel="noopener" class="article-card reveal">
+        <div class="article-meta">
+          <span class="article-date">Mar 8, 2025</span>
+          <span class="article-read">4 min read</span>
+        </div>
+        <h3 class="article-title">Marketing Mix Modeling (MMM) vs. Multi-Touch Attribution (MTA): Which One Should You Use?</h3>
+        <p class="article-desc">Compares two analytical approaches for measuring marketing effectiveness — MMM for strategic budget planning using statistical regression on aggregated data, and MTA for real-time digital campaign optimization via individual customer journey tracking.</p>
+        <div class="article-tags">
+          <span class="article-tag">Marketing Analytics</span>
+          <span class="article-tag">MMM</span>
+          <span class="article-tag">MTA</span>
+          <span class="article-tag">AdTech</span>
+        </div>
+        <div class="article-link">
+          Read on Medium
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        </div>
+      </a>
+
+      <a href="https://medium.com/@vanchasrujankumar/the-ultimate-guide-to-marketing-attribution-models-use-cases-best-practices-854b0dde22e3"
+         target="_blank" rel="noopener" class="article-card reveal d1">
+        <div class="article-meta">
+          <span class="article-date">Mar 7, 2025</span>
+          <span class="article-read">5 min read</span>
+        </div>
+        <h3 class="article-title">The Ultimate Guide to Marketing Attribution: Models, Use Cases &amp; Best Practices</h3>
+        <p class="article-desc">A comprehensive guide to seven attribution models — from first-touch and last-touch to AI-driven approaches — with guidance on selecting the right model based on sales cycles and business type, including privacy-focused strategies for the post-cookie era.</p>
+        <div class="article-tags">
+          <span class="article-tag">Attribution Modeling</span>
+          <span class="article-tag">Marketing Strategy</span>
+          <span class="article-tag">AdTech</span>
+          <span class="article-tag">Data Strategy</span>
+        </div>
+        <div class="article-link">
+          Read on Medium
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.82rem; color:var(--text-muted);">
+      More on <a href="https://medium.com/@vanchasrujankumar" target="_blank" rel="noopener">medium.com/@vanchasrujankumar</a>
+    </p>
   </div>
 </section>
 

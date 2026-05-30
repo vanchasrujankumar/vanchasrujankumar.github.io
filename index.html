@@ -4,438 +4,1080 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Srujan Kumar Vancha — Lead Data Engineer</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="description" content="Srujan Kumar Vancha — Lead Data Engineer. Big Data, GCP, Databricks, Spark, AI.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="Srujan Kumar Vancha — Lead Data Engineer. 10+ years building data platforms on GCP, Databricks, Spark, and AI.">
   <meta property="og:title" content="Srujan Kumar Vancha | Lead Data Engineer">
   <meta property="og:description" content="10+ years building large-scale data platforms across Retail, Banking, and AdTech.">
   <meta property="og:url" content="https://vanchasrujankumar.github.io">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --accent: #2563eb;
-      --accent-dim: #dbeafe;
-      --accent-light: #eff6ff;
-      --bg: #ffffff;
-      --bg-alt: #f8fafc;
-      --text: #1e293b;
-      --text-secondary: #64748b;
-      --text-muted: #94a3b8;
-      --border: #e2e8f0;
-      --shadow: 0 1px 3px rgba(0,0,0,0.04);
-      --shadow-hover: 0 8px 25px rgba(0,0,0,0.06);
+      --bg: #060d1b;
+      --bg-card: #0d1b2e;
+      --accent: #3b82f6;
+      --accent2: #8b5cf6;
+      --accent3: #06b6d4;
+      --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(255,255,255,0.08);
+      --border-accent: rgba(59,130,246,0.3);
+      --glow: 0 0 40px rgba(59,130,246,0.15);
     }
+
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
     a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a:hover { color: #60a5fa; }
 
-    /* Nav */
+    /* NAV */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(6,13,27,0.85);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
     }
+    nav.scrolled { border-bottom-color: var(--border-accent); }
     .nav-inner {
-      max-width: 960px; margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 1.5rem; height: 56px;
+      padding: 0 1.5rem; height: 60px;
     }
-    .nav-logo { font-weight: 700; font-size: 1rem; color: var(--accent); letter-spacing: -0.3px; }
-    .nav-links { display: flex; gap: 0.1rem; align-items: center; }
+    .nav-logo {
+      font-weight: 700; font-size: 0.95rem;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 0.25rem; align-items: center; }
     .nav-links a {
       color: var(--text-secondary); font-size: 0.82rem; font-weight: 500;
-      padding: 0.3rem 0.75rem; border-radius: 6px;
-      transition: all 0.15s; text-decoration: none;
+      padding: 0.35rem 0.85rem; border-radius: 6px;
+      transition: all 0.2s; text-decoration: none;
     }
-    .nav-links a:hover { color: var(--accent); background: var(--accent-light); text-decoration: none; }
-
-    /* Layout */
-    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 4rem 0; }
-    section + section { border-top: 1px solid var(--border); }
-    .section-title {
-      font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.5rem;
+    .nav-links a:hover { color: var(--accent); background: rgba(59,130,246,0.1); }
+    .nav-cta {
+      background: var(--gradient) !important;
+      color: white !important; -webkit-text-fill-color: white !important;
+      font-weight: 600 !important;
     }
-    .section-title::before {
-      content: ''; width: 20px; height: 3px; border-radius: 2px;
-      background: var(--accent); flex-shrink: 0;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 5rem 0 4rem;
-      background: linear-gradient(180deg, var(--accent-light) 0%, var(--bg) 100%);
-    }
-    .hero-grid {
-      display: flex; align-items: center; gap: 2.5rem;
-      max-width: 960px; margin: 0 auto; padding: 0 1.5rem;
-    }
-    .hero-avatar {
-      width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0;
-      background: var(--accent); display: flex; align-items: center; justify-content: center;
-      font-size: 2.2rem; color: white; font-weight: 700;
-      box-shadow: 0 4px 20px rgba(37,99,235,0.15);
-      overflow: hidden;
-    }
-    .hero h1 { font-size: 2rem; font-weight: 700; line-height: 1.15; margin-bottom: 0.25rem; }
-    .hero-subtitle { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
-    .hero-desc { font-size: 0.88rem; color: var(--text-secondary); max-width: 520px; line-height: 1.7; margin-bottom: 1rem; }
-    .hero-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .hero-links a {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.82rem; font-weight: 500; padding: 0.3rem 0.8rem;
-      border-radius: 6px; background: white; border: 1px solid var(--border);
-      color: var(--text-secondary); transition: all 0.15s; text-decoration: none;
-    }
-    .hero-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    /* Career */
-    .career-item { margin-bottom: 1.5rem; }
-    .career-item:last-child { margin-bottom: 0; }
-    .career-header { margin-bottom: 0.6rem; }
-    .career-role { font-size: 0.95rem; font-weight: 600; }
-    .career-company {
-      display: inline-block; font-size: 0.75rem; font-weight: 500;
-      background: var(--accent-dim); color: var(--accent);
-      padding: 0.1rem 0.5rem; border-radius: 4px; margin-left: 0.4rem;
-    }
-    .career-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
-    .career-details { list-style: none; }
-    .career-details li {
-      position: relative; padding-left: 1.1rem; margin-bottom: 0.25rem;
-      font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6;
-    }
-    .career-details li::before {
-      content: ''; position: absolute; left: 0; top: 9px;
-      width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.4;
-    }
-    .career-tech { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
-    .career-tech span {
-      padding: 0.12rem 0.5rem; border-radius: 4px;
-      background: var(--bg-alt); border: 1px solid var(--border);
-      font-size: 0.7rem; color: var(--text-secondary); font-weight: 500;
-    }
-
-    /* Skills */
-    .skills-category { margin-bottom: 1.5rem; }
-    .skills-category:last-child { margin-bottom: 0; }
-    .skills-category h3 {
-      font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;
-    }
-    .skill-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
-    .skill-label { width: 120px; font-size: 0.82rem; font-weight: 500; flex-shrink: 0; }
-    .skill-bar-wrap { flex: 1; height: 6px; background: var(--bg-alt); border-radius: 3px; overflow: hidden; }
-    .skill-bar { height: 100%; border-radius: 3px; background: var(--accent); width: 0; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .skill-bar.filled { }
-    .skill-pct { font-size: 0.75rem; color: var(--text-muted); width: 30px; text-align: right; }
-
-    /* Projects / GitHub */
-    .project-card {
-      border: 1px solid var(--border); border-radius: 8px;
-      padding: 1.1rem 1.25rem; margin-bottom: 0.75rem;
-      transition: all 0.15s;
-    }
-    .project-card:last-child { margin-bottom: 0; }
-    .project-card:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); }
-    .project-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .project-name a { color: var(--text); }
-    .project-name a:hover { color: var(--accent); }
-    .project-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; }
-    .project-meta { display: flex; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
-
-    /* Certs */
-    .certs-list { columns: 2; column-gap: 1rem; }
-    .cert-item {
-      font-size: 0.83rem; padding: 0.3rem 0; break-inside: avoid;
-      display: flex; align-items: baseline; gap: 0.4rem;
-    }
-    .cert-item::before { content: '▹'; color: var(--accent); font-size: 0.7rem; }
-
-    /* Contact */
-    .contact-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .contact-links a {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 6px;
-      font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);
-      transition: all 0.15s; text-decoration: none;
-    }
-    .contact-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    /* Footer */
-    footer {
-      text-align: center; padding: 2rem 1.5rem;
-      border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);
-    }
-    footer img { vertical-align: middle; margin-right: 6px; border-radius: 2px; }
-
-    /* Hamburger menu */
-    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 6px; background: none; border: none; }
     .hamburger span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.2s; }
 
+    /* HERO */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    #canvas-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      text-align: center; max-width: 780px; padding: 6rem 1.5rem 4rem;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25);
+      color: var(--accent); font-size: 0.78rem; font-weight: 500;
+      padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.75rem;
+      animation: fadeInDown 0.6s ease both;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.8);} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    @keyframes rotate { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+    @keyframes bounce { 0%,100%{transform:translateY(0) rotate(45deg);} 50%{transform:translateY(6px) rotate(45deg);} }
+
+    .hero-avatar-wrap {
+      width: 130px; height: 130px; margin: 0 auto 1.75rem;
+      position: relative; border-radius: 50%;
+      animation: fadeInDown 0.6s ease 0.1s both;
+    }
+    .hero-avatar-ring {
+      position: absolute; inset: -3px; border-radius: 50%;
+      background: var(--gradient); animation: rotate 6s linear infinite; z-index: -1;
+    }
+    .hero-avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: var(--bg-card); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; font-weight: 800; color: white;
+      border: 3px solid var(--bg);
+    }
+    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800;
+      line-height: 1.1; margin-bottom: 0.6rem;
+      background: linear-gradient(135deg, #fff 30%, #93c5fd 70%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+    .hero-title-wrap {
+      font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 500;
+      color: var(--text-secondary); margin-bottom: 1.25rem; min-height: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+    .typewriter {
+      color: var(--accent); font-weight: 600;
+      border-right: 2px solid var(--accent); padding-right: 2px;
+    }
+    .hero-desc {
+      font-size: 1rem; color: var(--text-secondary); max-width: 580px;
+      margin: 0 auto 2rem; line-height: 1.8;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+    .hero-actions {
+      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.5s both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.7rem 1.5rem; border-radius: 8px;
+      background: var(--gradient); color: white; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s; text-decoration: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59,130,246,0.4); color: white; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.7rem 1.5rem; border-radius: 8px;
+      background: transparent; color: var(--text); font-weight: 500; font-size: 0.9rem;
+      border: 1px solid var(--border); transition: all 0.2s; text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: var(--text-muted); font-size: 0.72rem;
+      animation: fadeIn 1s ease 1.2s both;
+    }
+    .scroll-arrow {
+      width: 18px; height: 18px;
+      border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted);
+      transform: rotate(45deg); animation: bounce 2s infinite;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 500; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem;
+    }
+    .section-label::before { content: '//'; opacity: 0.5; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 0.4rem; }
+    .section-sub { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 2.75rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* STATS */
+    #stats {
+      padding: 3rem 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.04), rgba(139,92,246,0.04));
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .stat-card {
+      text-align: center; padding: 1.75rem 1rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient);
+    }
+    .stat-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--glow); }
+    .stat-num {
+      font-size: 2.4rem; font-weight: 800; line-height: 1; margin-bottom: 0.3rem;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-secondary); }
+
+    /* EXPERTISE */
+    .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .exp-card {
+      padding: 1.75rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s;
+    }
+    .exp-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--glow); }
+    .exp-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 1rem; transition: transform 0.3s;
+    }
+    .exp-card:hover .exp-icon { transform: scale(1.1); }
+    .exp-card h3 { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.45rem; }
+    .exp-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 6px; top: 6px; bottom: 30px;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 2rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -2rem; top: 8px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--gradient); border: 2px solid var(--bg);
+      box-shadow: 0 0 10px rgba(59,130,246,0.5);
+    }
+    .tl-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; transition: all 0.3s;
+    }
+    .tl-card:hover { border-color: var(--border-accent); box-shadow: var(--glow); }
+    .tl-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap;
+    }
+    .tl-role { font-size: 0.97rem; font-weight: 600; }
+    .tl-company {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      background: rgba(59,130,246,0.12); color: var(--accent);
+      border: 1px solid rgba(59,130,246,0.2);
+      padding: 0.15rem 0.6rem; border-radius: 20px; margin-left: 0.4rem;
+    }
+    .tl-date {
+      font-size: 0.73rem; color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace; flex-shrink: 0; white-space: nowrap;
+    }
+    .tl-points { list-style: none; margin-bottom: 0.75rem; }
+    .tl-points li {
+      position: relative; padding-left: 1.2rem; margin-bottom: 0.35rem;
+      font-size: 0.84rem; color: var(--text-secondary); line-height: 1.65;
+    }
+    .tl-points li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .tl-tag {
+      padding: 0.12rem 0.5rem; border-radius: 4px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      font-size: 0.68rem; color: var(--text-muted); font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* SKILLS */
+    .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .skill-cat-title {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .skill-cat-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .skill-cat { margin-bottom: 2rem; }
+    .skill-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.7rem; }
+    .skill-name { width: 130px; font-size: 0.81rem; font-weight: 500; flex-shrink: 0; color: var(--text-secondary); }
+    .skill-track { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+    .skill-fill {
+      height: 100%; border-radius: 3px; background: var(--gradient);
+      width: 0; transition: width 1s cubic-bezier(0.16,1,0.3,1);
+    }
+    .skill-pct { font-size: 0.7rem; color: var(--text-muted); width: 30px; text-align: right; font-family: 'JetBrains Mono', monospace; }
+
+    .tech-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+    .tech-tag {
+      padding: 0.3rem 0.7rem; border-radius: 6px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.2s; cursor: default;
+    }
+    .tech-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(59,130,246,0.06); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; transition: all 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--glow); }
+    .project-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+    .project-ico { font-size: 1.5rem; }
+    .project-gh {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.72rem; color: var(--text-muted); transition: color 0.2s; text-decoration: none;
+    }
+    .project-gh:hover { color: var(--accent); }
+    .project-name { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .project-name a { color: var(--text); }
+    .project-name a:hover { color: var(--accent); }
+    .project-desc { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .project-tag {
+      padding: 0.12rem 0.45rem; border-radius: 4px;
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15);
+      font-size: 0.68rem; color: var(--accent); font-weight: 500;
+    }
+
+    /* CERTS */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 0.75rem; }
+    .cert-card {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.25rem; transition: all 0.3s;
+    }
+    .cert-card:hover { border-color: var(--border-accent); box-shadow: var(--glow); }
+    .cert-ico {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .cert-ico.gcp { background: rgba(52,168,83,0.12); }
+    .cert-ico.ai  { background: rgba(139,92,246,0.12); }
+    .cert-ico.cld { background: rgba(59,130,246,0.12); }
+    .cert-ico.dat { background: rgba(6,182,212,0.12); }
+    .cert-ico.mkt { background: rgba(245,158,11,0.12); }
+    .cert-text strong { display: block; font-size: 0.81rem; font-weight: 600; margin-bottom: 0.1rem; }
+    .cert-text span { font-size: 0.71rem; color: var(--text-muted); }
+
+    /* CONTACT */
+    #contact { text-align: center; }
+    .contact-wrap {
+      background: linear-gradient(135deg, rgba(59,130,246,0.07), rgba(139,92,246,0.07));
+      border: 1px solid rgba(59,130,246,0.18);
+      border-radius: 20px; padding: 3.5rem 2rem; max-width: 600px; margin: 0 auto;
+    }
+    .contact-desc { color: var(--text-secondary); max-width: 440px; margin: 0.75rem auto 0; font-size: 0.93rem; line-height: 1.75; }
+    .view-counter { margin-top: 1.5rem; display: flex; justify-content: center; }
+    .contact-links { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .clink {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.65rem 1.25rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500; transition: all 0.2s; text-decoration: none;
+    }
+    .clink-p { background: var(--gradient); color: white; }
+    .clink-p:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59,130,246,0.4); color: white; }
+    .clink-s { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); }
+    .clink-s:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center; padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--text-muted);
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .exp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 768px) {
-      .hero-grid { flex-direction: column; text-align: center; gap: 1.25rem; }
-      .hero-desc { margin-left: auto; margin-right: auto; }
-      .hero-links { justify-content: center; }
-      .nav-links { gap: 0; }
-      .nav-links a { padding: 0.3rem 0.5rem; font-size: 0.78rem; }
-      .certs-list { columns: 1; }
-      .skill-label { width: 90px; font-size: 0.78rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .exp-grid { grid-template-columns: 1fr; }
+      .skills-cols { grid-template-columns: 1fr; }
       .hamburger { display: flex; }
-      .nav-links { display: none; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.5rem; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(6,13,27,0.97); border-bottom: 1px solid var(--border);
+        padding: 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 0.6rem 1rem; }
+      .timeline { padding-left: 1.5rem; }
+      .tl-dot { left: -1.5rem; }
+      .tl-header { flex-direction: column; gap: 0.2rem; }
+      .skill-name { width: 110px; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-logo">Srujan Kumar Vancha</div>
-      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links">
-        <a href="#career">Career</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certs">Certs</a>
-        <a href="#contact">Contact</a>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">Srujan Kumar Vancha</div>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#career">Career</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certs</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="canvas-bg"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Currently at Target · Austin, TX
+    </div>
+
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar-ring"></div>
+      <div class="hero-avatar">
+        <img src="srujan.jpeg" alt="Srujan Kumar Vancha"
+             onerror="this.style.display='none';document.getElementById('avFallback').style.display='flex'">
+        <span id="avFallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">SKV</span>
       </div>
     </div>
-  </nav>
 
-  <div class="hero">
-    <div class="hero-grid">
-      <div class="hero-avatar" id="heroAvatar">
-        <img src="srujan.jpeg" alt="Srujan Kumar Vancha" onerror="this.style.display='none';document.getElementById('avatarFallback').style.display='flex'" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-        <span id="avatarFallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:2.2rem;font-weight:700;">SKV</span>
+    <h1 class="hero-name">Srujan Kumar Vancha</h1>
+
+    <div class="hero-title-wrap">
+      <span id="typed" class="typewriter"></span>
+    </div>
+
+    <p class="hero-desc">
+      10+ years architecting large-scale data platforms across Retail, Banking, and AdTech.
+      Building data lakes, real-time pipelines, and AI solutions on Google Cloud.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://www.linkedin.com/in/srujan-data-cloud-engineer/" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        LinkedIn
+      </a>
+      <a href="#career" class="btn-secondary">
+        View Career
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+      </a>
+      <a href="mailto:vanchasrujankumar@gmail.com" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-num"><span class="count" data-target="10">0</span>+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card reveal reveal-d1">
+        <div class="stat-num"><span class="count" data-target="3">0</span></div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-card reveal reveal-d2">
+        <div class="stat-num"><span class="count" data-target="10">0</span></div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-card reveal reveal-d3">
+        <div class="stat-num"><span class="count" data-target="20">0</span>%</div>
+        <div class="stat-label">Match Rate Increase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">What I Build</h2>
+    <p class="section-sub">End-to-end data solutions from pipeline to product.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">⚡</div>
+        <h3>Real-Time Data Pipelines</h3>
+        <p>High-throughput streaming architectures using Apache Kafka, Spark Structured Streaming, and Apache Druid for large-scale ad campaign processing.</p>
+      </div>
+      <div class="exp-card reveal reveal-d1">
+        <div class="exp-icon">☁️</div>
+        <h3>Cloud Data Platforms</h3>
+        <p>Enterprise data lakes and warehouses on GCP (BigQuery, Cloud Functions, Dataflow) and AWS — architected for reliability, governance, and scale.</p>
+      </div>
+      <div class="exp-card reveal reveal-d2">
+        <div class="exp-icon">🤖</div>
+        <h3>AI &amp; GenAI Solutions</h3>
+        <p>Production AI applications including the Roundel Assist chatbot powered by Target's internal LLM, GPT-4o, and Gemini 2.0 Flash.</p>
+      </div>
+      <div class="exp-card reveal reveal-d3">
+        <div class="exp-icon">🎯</div>
+        <h3>AdTech &amp; Audience Platforms</h3>
+        <p>Identity resolution and segmentation systems integrating LiveRamp, Neustar, The Trade Desk, and Google — boosting campaign effectiveness by 15%.</p>
+      </div>
+      <div class="exp-card reveal reveal-d4">
+        <div class="exp-icon">🔒</div>
+        <h3>Privacy &amp; Compliance</h3>
+        <p>Data governance frameworks for VA, TX, and WA state privacy regulations. Privacy-first data sharing protocols for social partner integrations.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🚀</div>
+        <h3>MLOps &amp; Platform Engineering</h3>
+        <p>Microservices on Kubernetes, automated CI/CD pipelines, and infrastructure-as-code with Terraform powering data platform reliability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Career</h2>
+    <p class="section-sub">Building at scale across Retail, Banking, and AdTech.</p>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Lead Engineer — Roundel Audiences <span class="tl-company">Target</span></span></div>
+            <div class="tl-date">Apr 2025 – Present · Austin, TX</div>
+          </div>
+          <ul class="tl-points">
+            <li>Enhanced segmentation tools — reduced processing latency and increased throughput for large-scale ad campaigns.</li>
+            <li>Led privacy compliance engineering for VA, TX, and WA regulations governing social partner data sharing.</li>
+            <li>Built Roundel Assist AI chatbot using Target's internal LLM, GPT-4o, and Gemini 2.0 Flash.</li>
+            <li>Improved CI/CD pipelines and automated SCA/SCE security remediation across the platform.</li>
+            <li>Leading cloud migration to GCP with BigQuery, Cloud Functions, and Terraform.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">GCP</span><span class="tl-tag">BigQuery</span><span class="tl-tag">GPT-4o</span>
+            <span class="tl-tag">Gemini 2.0</span><span class="tl-tag">React</span><span class="tl-tag">Terraform</span><span class="tl-tag">Kubernetes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Lead Data Engineer — Data Foundations <span class="tl-company">Target</span></span></div>
+            <div class="tl-date">Apr 2019 – Apr 2025 · Austin, TX</div>
+          </div>
+          <ul class="tl-points">
+            <li>Led external identification initiatives increasing audience match rates by 20%.</li>
+            <li>Integrated LiveRamp, Neustar, Xander, The Trade Desk, and Google for expanded targeting capabilities.</li>
+            <li>Leveraged Clean Rooms and Signal Sharing for a 15% boost in campaign effectiveness.</li>
+            <li>Designed scalable real-time and batch pipelines with PySpark, Scala, and Kafka.</li>
+            <li>Architected microservices deployed via Docker and Kubernetes.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">PySpark</span><span class="tl-tag">Scala</span><span class="tl-tag">Databricks</span>
+            <span class="tl-tag">Kafka</span><span class="tl-tag">Docker</span><span class="tl-tag">Kubernetes</span><span class="tl-tag">LiveRamp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Sr Data Engineer — Marketing Data Platform <span class="tl-company">Target</span></span></div>
+            <div class="tl-date">Sep 2017 – Apr 2019 · Minneapolis, MN</div>
+          </div>
+          <ul class="tl-points">
+            <li>Implemented CI/CD pipelines accelerating deployment cycles for marketing data products.</li>
+            <li>Integrated Apache Kafka and Druid for low-latency streaming analytics.</li>
+            <li>Built distributed processing workflows in PySpark and Spark Scala.</li>
+            <li>Designed DOMO dashboards tracking key business metrics across marketing campaigns.</li>
+            <li>Leveraged BigQuery for near-real-time analytics at scale.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">BigQuery</span><span class="tl-tag">Druid</span><span class="tl-tag">Kafka</span>
+            <span class="tl-tag">Spark</span><span class="tl-tag">DOMO</span><span class="tl-tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Sr Marketing Analyst / Sr Data Engineer <span class="tl-company">Target</span></span></div>
+            <div class="tl-date">Jun 2016 – Sep 2017 · Minneapolis, MN</div>
+          </div>
+          <ul class="tl-points">
+            <li>Built enterprise-scale data lake pipelines on GCP and AWS S3.</li>
+            <li>Developed predictive modules for audience forecasting and churn prediction.</li>
+            <li>Automated workflows with Jenkins, Oozie, Airflow, Docker, and Kubernetes.</li>
+            <li>Managed Google AdWords campaigns improving CTR and conversion rates.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">GCP</span><span class="tl-tag">AWS</span><span class="tl-tag">Hive</span>
+            <span class="tl-tag">Spark</span><span class="tl-tag">Jenkins</span><span class="tl-tag">Airflow</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Big Data Engineer <span class="tl-company">Morgan Stanley</span></span></div>
+            <div class="tl-date">Feb 2015 – May 2016 · New York City Metro</div>
+          </div>
+          <ul class="tl-points">
+            <li>Built Hadoop Data Lake pipelines using Sqoop, Hive, Spark, Kafka, Storm, HBase, and Solr.</li>
+            <li>Enhanced wealth management recommendation engine components.</li>
+            <li>Applied K-Means clustering for client segmentation.</li>
+            <li>Developed QlikView dashboards for portfolio performance and risk analysis.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Hadoop</span><span class="tl-tag">Spark</span><span class="tl-tag">Kafka</span>
+            <span class="tl-tag">HBase</span><span class="tl-tag">QlikView</span><span class="tl-tag">Storm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div><span class="tl-role">Intern <span class="tl-company">Mindagile Consulting</span></span></div>
+            <div class="tl-date">Jul 2014 – Dec 2014 · Greater Houston</div>
+          </div>
+          <ul class="tl-points">
+            <li>Built "Know Your Medicine" iOS app for symptom-based medicine lookup.</li>
+            <li>Integrated FDA APIs and geolocation for nearby doctor search.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">iOS</span><span class="tl-tag">Swift</span><span class="tl-tag">Java</span><span class="tl-tag">REST APIs</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">Tech Stack</h2>
+    <p class="section-sub">Core platforms and languages I work with every day.</p>
+
+    <div class="skills-cols">
+      <div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">Cloud &amp; Infrastructure</div>
+          <div class="skill-row"><span class="skill-name">Google Cloud</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+          <div class="skill-row"><span class="skill-name">Docker &amp; K8s</span><div class="skill-track"><div class="skill-fill" data-w="90"></div></div><span class="skill-pct">90%</span></div>
+          <div class="skill-row"><span class="skill-name">Terraform</span><div class="skill-track"><div class="skill-fill" data-w="80"></div></div><span class="skill-pct">80%</span></div>
+          <div class="skill-row"><span class="skill-name">AWS</span><div class="skill-track"><div class="skill-fill" data-w="75"></div></div><span class="skill-pct">75%</span></div>
+          <div class="skill-row"><span class="skill-name">Azure</span><div class="skill-track"><div class="skill-fill" data-w="65"></div></div><span class="skill-pct">65%</span></div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">Data Engineering</div>
+          <div class="skill-row"><span class="skill-name">Apache Spark</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+          <div class="skill-row"><span class="skill-name">BigQuery</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+          <div class="skill-row"><span class="skill-name">Databricks</span><div class="skill-track"><div class="skill-fill" data-w="90"></div></div><span class="skill-pct">90%</span></div>
+          <div class="skill-row"><span class="skill-name">Apache Kafka</span><div class="skill-track"><div class="skill-fill" data-w="85"></div></div><span class="skill-pct">85%</span></div>
+          <div class="skill-row"><span class="skill-name">Hive / Druid</span><div class="skill-track"><div class="skill-fill" data-w="80"></div></div><span class="skill-pct">80%</span></div>
+          <div class="skill-row"><span class="skill-name">Snowflake / dbt</span><div class="skill-track"><div class="skill-fill" data-w="75"></div></div><span class="skill-pct">75%</span></div>
+        </div>
       </div>
       <div>
-        <h1>Srujan Kumar Vancha</h1>
-        <div class="hero-subtitle">Lead Data Engineer</div>
-        <p class="hero-desc">
-          10+ years architecting large-scale data platforms across Retail, Banking, and AdTech.
-          Building data lakes, real-time pipelines, and AI solutions on Google Cloud.
-          Currently at Target (Roundel).
-        </p>
-        <div class="hero-links">
-          <a href="https://www.linkedin.com/in/srujan-data-cloud-engineer/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:vanchasrujankumar@gmail.com">Email</a>
-          <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener">GitHub</a>
+        <div class="skill-cat">
+          <div class="skill-cat-title">Languages</div>
+          <div class="skill-row"><span class="skill-name">Python</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+          <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+          <div class="skill-row"><span class="skill-name">Scala</span><div class="skill-track"><div class="skill-fill" data-w="85"></div></div><span class="skill-pct">85%</span></div>
+          <div class="skill-row"><span class="skill-name">Java / Spring Boot</span><div class="skill-track"><div class="skill-fill" data-w="75"></div></div><span class="skill-pct">75%</span></div>
+          <div class="skill-row"><span class="skill-name">Go</span><div class="skill-track"><div class="skill-fill" data-w="50"></div></div><span class="skill-pct">50%</span></div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">Monitoring &amp; CI/CD</div>
+          <div class="skill-row"><span class="skill-name">Jenkins / GitOps</span><div class="skill-track"><div class="skill-fill" data-w="80"></div></div><span class="skill-pct">80%</span></div>
+          <div class="skill-row"><span class="skill-name">Grafana / Prometheus</span><div class="skill-track"><div class="skill-fill" data-w="70"></div></div><span class="skill-pct">70%</span></div>
+          <div class="skill-row"><span class="skill-name">Kibana / Trino</span><div class="skill-track"><div class="skill-fill" data-w="70"></div></div><span class="skill-pct">70%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-cloud reveal">
+      <span class="tech-tag">PySpark</span>
+      <span class="tech-tag">Spark SQL</span>
+      <span class="tech-tag">Dataflow</span>
+      <span class="tech-tag">Pub/Sub</span>
+      <span class="tech-tag">Cloud Composer</span>
+      <span class="tech-tag">Dataproc</span>
+      <span class="tech-tag">BigQuery ML</span>
+      <span class="tech-tag">Vertex AI</span>
+      <span class="tech-tag">Hadoop</span>
+      <span class="tech-tag">HBase</span>
+      <span class="tech-tag">Solr</span>
+      <span class="tech-tag">Apache Airflow</span>
+      <span class="tech-tag">LiveRamp</span>
+      <span class="tech-tag">Neustar</span>
+      <span class="tech-tag">The Trade Desk</span>
+      <span class="tech-tag">Google DV360</span>
+      <span class="tech-tag">Clean Rooms</span>
+      <span class="tech-tag">GPT-4o</span>
+      <span class="tech-tag">Gemini 2.0</span>
+      <span class="tech-tag">GitHub Actions</span>
+      <span class="tech-tag">gRPC</span>
+      <span class="tech-tag">QlikView</span>
+      <span class="tech-tag">DOMO</span>
+      <span class="tech-tag">React</span>
+      <span class="tech-tag">Oozie</span>
+      <span class="tech-tag">Sqoop</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Open Source</div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Public repositories on GitHub.</p>
+
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-top">
+          <div class="project-ico">🚀</div>
+          <a href="https://github.com/vanchasrujankumar/go-learning-journey" target="_blank" rel="noopener" class="project-gh">
+            GitHub
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+        <div class="project-name"><a href="https://github.com/vanchasrujankumar/go-learning-journey" target="_blank" rel="noopener">go-learning-journey</a></div>
+        <p class="project-desc">Structured Go learning repository with test-driven exercises, REST APIs, gRPC, concurrency patterns, and full CI/CD automation via GitHub Actions.</p>
+        <div class="project-tags">
+          <span class="project-tag">Go</span>
+          <span class="project-tag">gRPC</span>
+          <span class="project-tag">GitHub Actions</span>
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">Renovate</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-d1">
+        <div class="project-top">
+          <div class="project-ico">🤖</div>
+          <a href="https://github.com/vanchasrujankumar/copilot-repo" target="_blank" rel="noopener" class="project-gh">
+            GitHub
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+        <div class="project-name"><a href="https://github.com/vanchasrujankumar/copilot-repo" target="_blank" rel="noopener">copilot-repo</a></div>
+        <p class="project-desc">Global GitHub Copilot repository with multi-agent, self-learning AI capabilities. Explores agentic programming workflows and AI-assisted development for data engineering.</p>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">AI Agents</span>
+          <span class="project-tag">GitHub Copilot</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-d2">
+        <div class="project-top">
+          <div class="project-ico">⚙️</div>
+          <a href="https://github.com/vanchasrujankumar/macos-dev-setup" target="_blank" rel="noopener" class="project-gh">
+            GitHub
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+        <div class="project-name"><a href="https://github.com/vanchasrujankumar/macos-dev-setup" target="_blank" rel="noopener">macos-dev-setup</a></div>
+        <p class="project-desc">Automated macOS developer environment setup scripts — bootstrapping a complete data engineering workstation with Homebrew, Docker, Python, Go, and cloud CLIs.</p>
+        <div class="project-tags">
+          <span class="project-tag">Shell</span>
+          <span class="project-tag">Homebrew</span>
+          <span class="project-tag">DevOps</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.82rem; color:var(--text-muted);">
+      More on <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener">github.com/vanchasrujankumar</a>
+    </p>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">Continuous learning across cloud, data, and AI.</p>
+
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-ico gcp">☁️</div>
+        <div class="cert-text">
+          <strong>Google Cloud Professional Data Engineer</strong>
+          <span>Google Cloud · Professional</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d1">
+        <div class="cert-ico ai">🤖</div>
+        <div class="cert-text">
+          <strong>Generative AI for Everyone</strong>
+          <span>DeepLearning.AI</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d2">
+        <div class="cert-ico ai">🧠</div>
+        <div class="cert-text">
+          <strong>Building GenAI Apps with Python</strong>
+          <span>IBM</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-ico ai">⭐</div>
+        <div class="cert-text">
+          <strong>Introduction to AI (Honors)</strong>
+          <span>IBM · With Distinction</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d1">
+        <div class="cert-ico cld">📋</div>
+        <div class="cert-text">
+          <strong>Foundations of Project Management</strong>
+          <span>Google</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d2">
+        <div class="cert-ico cld">💡</div>
+        <div class="cert-text">
+          <strong>Processing Big Data with Azure Data Lake</strong>
+          <span>Microsoft</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-ico dat">⚡</div>
+        <div class="cert-text">
+          <strong>Apache Spark</strong>
+          <span>MapR</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d1">
+        <div class="cert-ico dat">📨</div>
+        <div class="cert-text">
+          <strong>Apache Kafka</strong>
+          <span>IBM</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-d2">
+        <div class="cert-ico mkt">🎯</div>
+        <div class="cert-text">
+          <strong>Marketing Foundations</strong>
+          <span>The Trade Desk · Edge Academy</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-ico mkt">🔍</div>
+        <div class="cert-text">
+          <strong>Google DoubleClick Search Certification</strong>
+          <span>Google</span>
         </div>
       </div>
     </div>
   </div>
+</section>
 
+<!-- CONTACT -->
+<section id="contact">
   <div class="container">
-
-    <section id="career">
-      <h2 class="section-title">Career</h2>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Lead Engineer — Roundel Audiences <span class="career-company">Target</span></span>
-          <div class="career-date">Apr 2025 – Present · Austin, TX</div>
-        </div>
-        <ul class="career-details">
-          <li>Enhanced segmentation tools — reduced processing latency and increased throughput for large-scale ad campaigns.</li>
-          <li>Led privacy compliance (VA, TX, WA) for social partner data sharing.</li>
-          <li>Built Roundel Assist AI chatbot using Target LLM + GPT-4.0 + Gemini 2.0.</li>
-          <li>Improved CI/CD pipelines and automated SCA/SCE security remediation.</li>
-          <li>Leading cloud migration to GCP with BigQuery, Cloud Functions, and Terraform.</li>
-        </ul>
-        <div class="career-tech"><span>GCP</span><span>BigQuery</span><span>GPT-4</span><span>Gemini</span><span>React</span><span>Terraform</span><span>K8s</span></div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Lead Data Engineer — Data Foundations <span class="career-company">Target</span></span>
-          <div class="career-date">Apr 2019 – Apr 2025 · Austin, TX</div>
-        </div>
-        <ul class="career-details">
-          <li>Led external identification initiatives increasing match rates by 20%.</li>
-          <li>Integrated LiveRamp, Neustar, Xander, TTD, Google for expanded targeting.</li>
-          <li>Leveraged CleanRooms and Signal Sharing for 15% boost in campaign effectiveness.</li>
-          <li>Designed scalable real-time and batch pipelines with PySpark, Scala, and Kafka.</li>
-          <li>Architected microservices deployed via Docker and Kubernetes.</li>
-        </ul>
-        <div class="career-tech"><span>PySpark</span><span>Scala</span><span>Databricks</span><span>Kafka</span><span>Docker</span><span>K8s</span></div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Sr Data Engineer — Marketing Data Platform <span class="career-company">Target</span></span>
-          <div class="career-date">Sep 2017 – Apr 2019 · Minneapolis, MN</div>
-        </div>
-        <ul class="career-details">
-          <li>Implemented CI/CD pipelines accelerating deployment cycles.</li>
-          <li>Integrated Apache Kafka and Druid for low-latency streaming analytics.</li>
-          <li>Built distributed processing workflows in PySpark and Spark Scala.</li>
-          <li>Designed DOMO dashboards tracking key business metrics.</li>
-          <li>Leveraged BigQuery for near real-time analytics at scale.</li>
-        </ul>
-        <div class="career-tech"><span>BigQuery</span><span>Druid</span><span>Kafka</span><span>Spark</span><span>DOMO</span></div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Sr Marketing Analyst / Sr Data Engineer <span class="career-company">Target</span></span>
-          <div class="career-date">Jun 2016 – Sep 2017 · Minneapolis, MN</div>
-        </div>
-        <ul class="career-details">
-          <li>Enterprise-scale data lake pipelines on GCP and AWS S3.</li>
-          <li>Built predictive modules for audience forecasting and churn prediction.</li>
-          <li>Automated workflows with Jenkins, Oozie, Airflow, Docker, K8s.</li>
-          <li>Managed Google AdWords campaigns improving CTR and conversions.</li>
-        </ul>
-        <div class="career-tech"><span>GCP</span><span>AWS</span><span>Hive</span><span>Spark</span><span>Jenkins</span><span>Airflow</span></div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Big Data Engineer <span class="career-company">Morgan Stanley</span></span>
-          <div class="career-date">Feb 2015 – May 2016 · New York City Metro</div>
-        </div>
-        <ul class="career-details">
-          <li>Built Hadoop Data Lake pipelines (Sqoop, Hive, Spark, Kafka, Storm, HBase, Solr).</li>
-          <li>Enhanced wealth management recommendation engine components.</li>
-          <li>Applied K-Means clustering for client segmentation.</li>
-          <li>Developed QlikView dashboards for portfolio performance and risk analysis.</li>
-        </ul>
-        <div class="career-tech"><span>Hadoop</span><span>Spark</span><span>Kafka</span><span>HBase</span><span>QlikView</span></div>
-      </div>
-
-      <div class="career-item">
-        <div class="career-header">
-          <span class="career-role">Intern <span class="career-company">Mindagile Consulting</span></span>
-          <div class="career-date">Jul 2014 – Dec 2014 · Greater Houston</div>
-        </div>
-        <ul class="career-details">
-          <li>Built "Know Your Medicine" iOS app for symptom-based medicine lookup.</li>
-          <li>Integrated FDA APIs and geolocation for nearby doctor search.</li>
-        </ul>
-        <div class="career-tech"><span>iOS</span><span>Swift</span><span>Java</span><span>REST APIs</span></div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2 class="section-title">Skills</h2>
-
-      <div class="skills-category">
-        <h3>Cloud &amp; Infrastructure</h3>
-        <div class="skill-row"><span class="skill-label">Google Cloud</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-label">AWS</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div><span class="skill-pct">75%</span></div>
-        <div class="skill-row"><span class="skill-label">Azure</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="65"></div></div><span class="skill-pct">65%</span></div>
-        <div class="skill-row"><span class="skill-label">Docker &amp; K8s</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="90"></div></div><span class="skill-pct">90%</span></div>
-        <div class="skill-row"><span class="skill-label">Terraform</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div><span class="skill-pct">80%</span></div>
-      </div>
-
-      <div class="skills-category">
-        <h3>Data Engineering</h3>
-        <div class="skill-row"><span class="skill-label">Apache Spark</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-label">Databricks</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="90"></div></div><span class="skill-pct">90%</span></div>
-        <div class="skill-row"><span class="skill-label">BigQuery</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-label">Apache Kafka</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div><span class="skill-pct">85%</span></div>
-        <div class="skill-row"><span class="skill-label">Snowflake / DBT</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div><span class="skill-pct">75%</span></div>
-        <div class="skill-row"><span class="skill-label">Hive / Druid</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div><span class="skill-pct">80%</span></div>
-      </div>
-
-      <div class="skills-category">
-        <h3>Languages &amp; Frameworks</h3>
-        <div class="skill-row"><span class="skill-label">Python</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-label">Scala</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="85"></div></div><span class="skill-pct">85%</span></div>
-        <div class="skill-row"><span class="skill-label">Java / Spring Boot</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="75"></div></div><span class="skill-pct">75%</span></div>
-        <div class="skill-row"><span class="skill-label">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="95"></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-row"><span class="skill-label">Go</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="50"></div></div><span class="skill-pct">50%</span></div>
-      </div>
-
-      <div class="skills-category">
-        <h3>Monitoring &amp; CI/CD</h3>
-        <div class="skill-row"><span class="skill-label">Grafana / Prometheus</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div><span class="skill-pct">70%</span></div>
-        <div class="skill-row"><span class="skill-label">Jenkins / GitOps</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="80"></div></div><span class="skill-pct">80%</span></div>
-        <div class="skill-row"><span class="skill-label">Kibana / Trino</span><div class="skill-bar-wrap"><div class="skill-bar" data-w="70"></div></div><span class="skill-pct">70%</span></div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="project-card">
-        <div class="project-name"><a href="https://github.com/vanchasrujankumar/go-learning-journey" target="_blank" rel="noopener">go-learning-journey</a></div>
-        <div class="project-desc">Structured Go learning repository with test-driven exercises, REST APIs, gRPC, concurrency patterns, and full CI/CD automation via GitHub Actions.</div>
-        <div class="project-meta">
-          <span>Go</span>
-          <span>GitHub Actions</span>
-          <span>Docker</span>
-          <span>Renovate</span>
-        </div>
-      </div>
-      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:1rem;">
-        More projects on <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener">GitHub</a>
+    <div class="contact-wrap reveal">
+      <div class="section-label" style="justify-content:center;">Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="contact-desc">
+        Open to discussing data engineering challenges, AdTech opportunities,
+        or anything at the intersection of cloud and big data.
       </p>
-    </section>
 
-    <section id="certs">
-      <h2 class="section-title">Certifications</h2>
-      <div class="certs-list">
-        <div class="cert-item">Google Cloud Professional Data Engineer</div>
-        <div class="cert-item">Generative AI for Everyone — DeepLearning.AI</div>
-        <div class="cert-item">Building GenAI Apps with Python — IBM</div>
-        <div class="cert-item">Introduction to AI (Honors) — IBM</div>
-        <div class="cert-item">Foundations of Project Management — Google</div>
-        <div class="cert-item">Processing Big Data with Azure Data Lake — Microsoft</div>
-        <div class="cert-item">Apache Spark — MapR</div>
-        <div class="cert-item">Apache Kafka — IBM</div>
-        <div class="cert-item">Marketing Foundations — The Trade Desk</div>
-        <div class="cert-item">Google DoubleClick Search Certification</div>
+      <div class="view-counter">
+        <img src="https://komarev.com/ghpvc/?username=vanchasrujankumar&color=3b82f6&style=flat-square&label=Profile+Views" alt="Profile views" style="border-radius:4px; height:20px;">
       </div>
-    </section>
 
-    <section id="contact">
-      <h2 class="section-title">Contact</h2>
-      <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem;">
-        Open to discussing data engineering challenges, AdTech opportunities, or anything cloud and big data related.
-      </p>
       <div class="contact-links">
-        <a href="https://www.linkedin.com/in/srujan-data-cloud-engineer/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:vanchasrujankumar@gmail.com">Email</a>
-        <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://vanchasrujankumar.github.io" target="_blank" rel="noopener">Portfolio</a>
+        <a href="https://www.linkedin.com/in/srujan-data-cloud-engineer/" target="_blank" rel="noopener" class="clink clink-p">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:vanchasrujankumar@gmail.com" class="clink clink-s">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener" class="clink clink-s">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
-    </section>
-
+    </div>
   </div>
+</section>
 
-  <footer>
-    <p><img src="https://github.com/vanchasrujankumar/vanchasrujankumar.github.io/actions/workflows/deploy.yml/badge.svg" alt="Deploy"> &copy; 2025 Srujan Kumar Vancha.</p>
-  </footer>
+<footer>
+  <p>
+    <img src="https://github.com/vanchasrujankumar/vanchasrujankumar.github.io/actions/workflows/deploy.yml/badge.svg" alt="Deploy" style="vertical-align:middle;margin-right:6px;border-radius:2px;">
+    &copy; 2026 Srujan Kumar Vancha ·
+    <a href="https://github.com/vanchasrujankumar" target="_blank" rel="noopener">GitHub</a>
+  </p>
+</footer>
 
-  <script>
-    // Animate skill bars on scroll
-    const skillObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const bar = e.target;
-        bar.style.width = bar.dataset.w + '%';
-        skillObs.unobserve(bar);
-      });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.skill-bar').forEach(el => skillObs.observe(el));
+<script>
+// PARTICLE CANVAS
+(function() {
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
 
-    // Close mobile nav on link click
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('open');
-      });
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function Particle() { this.reset(); }
+  Particle.prototype.reset = function() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.35;
+    this.vy = (Math.random() - 0.5) * 0.35;
+    this.r = Math.random() * 1.5 + 0.4;
+    this.alpha = Math.random() * 0.45 + 0.08;
+    this.color = Math.random() > 0.5 ? '#3b82f6' : '#8b5cf6';
+  };
+  Particle.prototype.update = function() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  };
+
+  function init() {
+    resize();
+    particles = [];
+    const n = Math.min(Math.floor(W * H / 10000), 120);
+    for (let i = 0; i < n; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(59,130,246,${0.12 * (1 - d/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(p => {
+      p.update();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
     });
-  </script>
+    requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+  window.addEventListener('resize', init);
+})();
+
+// NAV SCROLL EFFECT
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// TYPEWRITER
+(function() {
+  const el = document.getElementById('typed');
+  const phrases = ['Lead Data Engineer', 'Cloud Architect', 'AI Solutions Builder', 'Big Data Specialist', 'AdTech Expert'];
+  let pi = 0, ci = 0, del = false, wait = 0;
+  function tick() {
+    if (wait > 0) { wait--; setTimeout(tick, 80); return; }
+    const phrase = phrases[pi];
+    if (!del) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { del = true; wait = 22; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; wait = 4; }
+    }
+    setTimeout(tick, del ? 38 : 78);
+  }
+  tick();
+})();
+
+// SCROLL REVEAL
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// SKILL BARS
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (!e.isIntersecting) return; e.target.style.width = e.target.dataset.w + '%'; barObs.unobserve(e.target); });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-fill').forEach(el => barObs.observe(el));
+
+// ANIMATED COUNTERS
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.target;
+    let cur = 0;
+    const step = target / 40;
+    const t = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = Math.floor(cur);
+      if (cur >= target) clearInterval(t);
+    }, 38);
+    cntObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count').forEach(el => cntObs.observe(el));
+
+// MOBILE NAV
+document.getElementById('menuBtn').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+</script>
 </body>
 </html>

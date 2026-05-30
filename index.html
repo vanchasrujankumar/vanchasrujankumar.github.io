@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Srujan Vancha | Lead Data Engineer</title>
+  <title>Srujan Vancha</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Srujan Vancha - Lead Data Engineer. Big Data, GCP, Databricks, Spark, AI.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Srujan Vancha | Lead Data Engineer">
+  <meta property="og:description" content="10+ years building large-scale data platforms across Retail, Banking, and AdTech.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vanchasrujankumar.github.io">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #2563eb;
       --primary-light: #dbeafe;
-      --primary-dark: #1d4ed8;
       --accent: #059669;
       --accent-light: #d1fae5;
       --bg: #f8fafc;
@@ -25,8 +30,8 @@
       --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
       --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
-      --gradient-hero: linear-gradient(135deg, #2563eb 0%, #059669 50%, #2563eb 100%);
-      --gradient-accent: linear-gradient(135deg, #2563eb, #059669);
+      --gradient-text: linear-gradient(135deg, #2563eb 0%, #059669 50%, #2563eb 100%);
+      --gradient-btn: linear-gradient(135deg, #2563eb, #059669);
     }
 
     html { scroll-behavior: smooth; }
@@ -41,7 +46,7 @@
     ::-webkit-scrollbar-track { background: var(--bg-alt); }
     ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 4px; }
 
-    /* Fluid background */
+    /* Background */
     .bg-flow {
       position: fixed; inset: 0;
       background:
@@ -53,37 +58,36 @@
     }
     @keyframes flowBg {
       0% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.05) rotate(0.5deg); }
+      50% { transform: scale(1.04) rotate(0.3deg); }
       100% { transform: scale(1) rotate(0deg); }
     }
-
-    /* Particles */
     .particles { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
     .particle {
       position: absolute; width: 4px; height: 4px;
       background: var(--primary); border-radius: 50%;
-      opacity: 0.15; animation: particleFloat 15s infinite;
+      opacity: 0.12;
+      animation: particleFloat 15s infinite;
     }
-    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 18s; }
-    .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 2s; animation-duration: 14s; width: 3px; height: 3px; }
-    .particle:nth-child(3) { left: 40%; top: 10%; animation-delay: 4s; animation-duration: 20s; background: var(--accent); }
-    .particle:nth-child(4) { left: 55%; top: 70%; animation-delay: 1s; animation-duration: 16s; width: 5px; height: 5px; }
-    .particle:nth-child(5) { left: 70%; top: 30%; animation-delay: 3s; animation-duration: 22s; background: var(--accent); opacity: 0.1; }
-    .particle:nth-child(6) { left: 85%; top: 80%; animation-delay: 5s; animation-duration: 12s; width: 3px; height: 3px; }
-    .particle:nth-child(7) { left: 15%; top: 90%; animation-delay: 6s; animation-duration: 19s; }
-    .particle:nth-child(8) { left: 90%; top: 15%; animation-delay: 2.5s; animation-duration: 17s; background: var(--accent); }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-duration: 18s; }
+    .particle:nth-child(2) { left: 25%; top: 60%; animation-duration: 14s; animation-delay: 2s; width: 3px; height: 3px; }
+    .particle:nth-child(3) { left: 40%; top: 10%; animation-duration: 20s; animation-delay: 4s; background: var(--accent); }
+    .particle:nth-child(4) { left: 55%; top: 70%; animation-duration: 16s; animation-delay: 1s; width: 5px; height: 5px; }
+    .particle:nth-child(5) { left: 70%; top: 30%; animation-duration: 22s; animation-delay: 3s; background: var(--accent); opacity: 0.08; }
+    .particle:nth-child(6) { left: 85%; top: 80%; animation-duration: 12s; animation-delay: 5s; width: 3px; height: 3px; }
+    .particle:nth-child(7) { left: 15%; top: 90%; animation-duration: 19s; animation-delay: 6s; }
+    .particle:nth-child(8) { left: 90%; top: 15%; animation-duration: 17s; animation-delay: 2.5s; background: var(--accent); }
     @keyframes particleFloat {
-      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.15; }
-      25% { transform: translateY(-30px) translateX(10px); opacity: 0.25; }
-      50% { transform: translateY(0) translateX(20px); opacity: 0.15; }
-      75% { transform: translateY(20px) translateX(-10px); opacity: 0.2; }
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.12; }
+      25% { transform: translateY(-30px) translateX(10px); opacity: 0.2; }
+      50% { transform: translateY(0) translateX(20px); opacity: 0.12; }
+      75% { transform: translateY(20px) translateX(-10px); opacity: 0.16; }
     }
 
-    /* Navigation */
+    /* Nav */
     nav {
       position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
       z-index: 100;
-      padding: 0.75rem 1.5rem;
+      padding: 0.7rem 1.5rem;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -94,11 +98,10 @@
       width: 90%; max-width: 700px;
     }
     nav.hidden { transform: translateX(-50%) translateY(-120%); opacity: 0; }
-    nav.scrolled { box-shadow: var(--shadow-lg); }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
     .nav-logo {
-      font-weight: 800; font-size: 1.1rem;
-      background: var(--gradient-hero);
+      font-weight: 800; font-size: 1.05rem;
+      background: var(--gradient-text);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -106,13 +109,13 @@
     .nav-links { display: flex; gap: 0.25rem; align-items: center; }
     .nav-links a {
       color: var(--text-secondary); text-decoration: none; font-size: 0.82rem;
-      font-weight: 500; padding: 0.4rem 0.9rem; border-radius: 50px;
+      font-weight: 500; padding: 0.35rem 0.85rem; border-radius: 50px;
       transition: all 0.2s;
     }
     .nav-links a:hover { background: var(--primary-light); color: var(--primary); }
     .nav-cta {
-      background: var(--gradient-accent) !important; color: white !important;
-      padding: 0.4rem 1rem !important; font-weight: 600 !important;
+      background: var(--gradient-btn) !important; color: white !important;
+      padding: 0.35rem 1rem !important; font-weight: 600 !important;
       margin-left: 0.5rem;
     }
     .nav-cta:hover { box-shadow: 0 4px 12px rgba(37,99,235,0.3) !important; }
@@ -121,111 +124,95 @@
     section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
     .section-label {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
       color: var(--primary); margin-bottom: 0.75rem;
     }
     .section-label::before {
-      content: ''; width: 24px; height: 2px; background: var(--gradient-accent);
+      content: ''; width: 24px; height: 2px;
+      background: var(--gradient-btn);
     }
     .section-title {
-      font-size: 2rem; font-weight: 700; margin-bottom: 3rem;
-      color: var(--text);
+      font-size: 1.9rem; font-weight: 700; margin-bottom: 2.5rem;
     }
-    .section-title span { background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-title span { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
     /* Hero */
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding-top: 6rem; position: relative;
+      padding-top: 6rem;
     }
     .hero-content { text-align: center; max-width: 720px; }
     .hero-avatar {
-      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.5rem;
-      background: var(--gradient-hero);
+      width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 1.5rem;
+      background: var(--gradient-text);
       display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; color: white; font-weight: 700;
+      font-size: 2.5rem; color: white; font-weight: 700;
       box-shadow: 0 8px 30px rgba(37,99,235,0.2);
       animation: avatarFloat 4s ease-in-out infinite;
       position: relative;
     }
     .hero-avatar::after {
       content: ''; position: absolute; inset: -4px; border-radius: 50%;
-      border: 2px solid rgba(37,99,235,0.15);
+      border: 2px solid rgba(37,99,235,0.12);
       animation: avatarPulse 3s ease-in-out infinite;
     }
     @keyframes avatarFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes avatarPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.5; } }
-    .hero-greeting {
-      font-size: 1rem; color: var(--accent); font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
+    .hero-greeting { font-size: 1rem; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
     .hero-greeting span { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
     @keyframes wave { 0%, 100% { transform: rotate(0deg); } 10% { transform: rotate(14deg); } 20% { transform: rotate(-8deg); } 30% { transform: rotate(14deg); } 40% { transform: rotate(-4deg); } 50% { transform: rotate(10deg); } }
     .hero-name {
       font-size: clamp(2.8rem, 7vw, 4.5rem); font-weight: 800;
       line-height: 1.05; margin-bottom: 0.5rem;
-      background: var(--gradient-hero);
+      background: var(--gradient-text);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       background-size: 200% auto;
-      animation: heroShimmer 4s linear infinite;
+      animation: shimmer 4s linear infinite;
     }
-    @keyframes heroShimmer { 0% { background-position: 0% center; } 50% { background-position: 100% center; } 100% { background-position: 0% center; } }
-    .hero-title {
-      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary);
-      font-weight: 400; margin-bottom: 1.5rem;
-    }
-    .hero-desc {
-      font-size: 1rem; color: var(--text-secondary);
-      max-width: 560px; margin: 0 auto 2rem; line-height: 1.8;
-    }
-    .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
+    @keyframes shimmer { 0% { background-position: 0% center; } 50% { background-position: 100% center; } 100% { background-position: 0% center; } }
+    .hero-title { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-secondary); font-weight: 400; margin-bottom: 1.5rem; }
+    .hero-desc { font-size: 0.95rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto 1.75rem; line-height: 1.8; }
+    .hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.75rem; }
     .hero-badge {
-      padding: 0.35rem 1rem; border-radius: 50px;
-      background: var(--primary-light); border: 1px solid rgba(37,99,235,0.15);
-      font-size: 0.8rem; color: var(--primary-dark); font-weight: 500;
+      padding: 0.3rem 0.9rem; border-radius: 50px;
+      background: var(--primary-light); border: 1px solid rgba(37,99,235,0.12);
+      font-size: 0.78rem; color: var(--primary-dark); font-weight: 500;
       transition: all 0.3s; cursor: default;
     }
     .hero-badge:hover { background: var(--primary); color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.2); }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
     .btn {
-      padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600;
-      font-size: 0.9rem; cursor: pointer; transition: all 0.3s;
+      padding: 0.75rem 1.75rem; border-radius: 50px; font-weight: 600;
+      font-size: 0.88rem; cursor: pointer; transition: all 0.3s;
       text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
       border: none;
     }
-    .btn-primary {
-      background: var(--gradient-accent); color: white;
-      box-shadow: 0 4px 15px rgba(37,99,235,0.25);
-    }
+    .btn-primary { background: var(--gradient-btn); color: white; box-shadow: 0 4px 15px rgba(37,99,235,0.25); }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37,99,235,0.35); }
-    .btn-outline {
-      background: white; color: var(--text);
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-    }
+    .btn-outline { background: white; color: var(--text); border: 1px solid var(--border); box-shadow: var(--shadow); }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .btn-outline svg { width: 18px; height: 18px; }
 
     /* Stats */
     .stats-bar {
-      display: flex; gap: 2rem; justify-content: center; margin-top: 3rem;
-      padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; gap: 2rem; justify-content: center; margin-top: 2.5rem;
+      padding-top: 1.75rem; border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .stat-item { text-align: center; min-width: 100px; }
-    .stat-number { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .stat-item { text-align: center; min-width: 90px; }
+    .stat-number { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
 
-    /* Experience Timeline */
+    /* Timeline */
     .timeline { position: relative; padding: 0; }
     .timeline-line {
       position: absolute; left: 24px; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(to bottom, var(--primary), var(--accent), transparent);
-      opacity: 0.3;
+      opacity: 0.25;
     }
     .timeline-item {
-      position: relative; margin-bottom: 2.5rem; padding-left: 64px;
+      position: relative; margin-bottom: 2rem; padding-left: 64px;
       opacity: 0; transform: translateY(20px);
       transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -236,10 +223,7 @@
       background: white; border: 3px solid var(--primary);
       z-index: 1; transition: all 0.3s;
     }
-    .timeline-item.current .timeline-dot {
-      border-color: var(--accent); background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-light);
-    }
+    .timeline-item.current .timeline-dot { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
     .timeline-item:hover .timeline-dot { transform: scale(1.2); }
     .timeline-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -247,137 +231,70 @@
       box-shadow: var(--shadow);
       transition: all 0.3s;
     }
-    .timeline-card:hover {
-      border-color: var(--primary); box-shadow: var(--shadow-lg);
-      transform: translateX(4px);
-    }
+    .timeline-card:hover { border-color: var(--primary); box-shadow: var(--shadow-lg); transform: translateX(4px); }
     .timeline-header { margin-bottom: 0.75rem; }
-    .timeline-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      flex-wrap: wrap; gap: 0.5rem;
-    }
-    .timeline-role { font-size: 1rem; font-weight: 600; color: var(--text); }
-    .timeline-company {
-      display: inline-block; font-size: 0.82rem; color: white; font-weight: 500;
-      background: var(--gradient-accent); padding: 0.15rem 0.75rem; border-radius: 50px;
-    }
-    .timeline-date {
-      font-size: 0.78rem; color: var(--text-muted); font-family: 'Inter', monospace;
-      margin-top: 0.25rem; display: flex; align-items: center; gap: 0.35rem;
-    }
-    .timeline-date svg { width: 14px; height: 14px; }
+    .timeline-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; }
+    .timeline-role { font-size: 1rem; font-weight: 600; }
+    .timeline-company { display: inline-block; font-size: 0.8rem; color: white; font-weight: 500; background: var(--gradient-btn); padding: 0.15rem 0.7rem; border-radius: 50px; }
+    .timeline-date { font-size: 0.76rem; color: var(--text-muted); margin-top: 0.25rem; }
     .timeline-details { list-style: none; margin-top: 0.75rem; }
     .timeline-details li {
-      position: relative; padding-left: 1.25rem; margin-bottom: 0.4rem;
-      font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;
+      position: relative; padding-left: 1.25rem; margin-bottom: 0.35rem;
+      font-size: 0.86rem; color: var(--text-secondary); line-height: 1.6;
     }
-    .timeline-details li::before {
-      content: ''; position: absolute; left: 0; top: 10px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--primary); opacity: 0.4;
-    }
-    .timeline-tech {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
-    }
-    .timeline-tech span {
-      padding: 0.2rem 0.65rem; border-radius: 6px;
-      background: var(--bg-alt);
-      font-size: 0.72rem; color: var(--text-secondary); font-weight: 500;
-      letter-spacing: 0.01em;
-    }
+    .timeline-details li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--primary); opacity: 0.35; }
+    .timeline-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.7rem; }
+    .timeline-tech span { padding: 0.18rem 0.6rem; border-radius: 6px; background: var(--bg-alt); font-size: 0.7rem; color: var(--text-secondary); font-weight: 500; }
 
-    /* Skills */
-    .skills-grid {
-      display: grid; gap: 1rem;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    }
+    /* Skills grid */
+    .skills-grid { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
     .skill-card {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 1.25rem 0.75rem; text-align: center;
+      border-radius: 14px; padding: 1.15rem 0.5rem; text-align: center;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: default;
       opacity: 0; transform: translateY(20px);
       box-shadow: var(--shadow);
     }
     .skill-card.visible { opacity: 1; transform: translateY(0); }
-    .skill-card:hover {
-      border-color: var(--primary); transform: translateY(-6px) !important;
-      box-shadow: 0 12px 30px rgba(37,99,235,0.12);
-    }
-    .skill-icon {
-      width: 40px; height: 40px; margin: 0 auto 0.6rem;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .skill-icon svg { width: 32px; height: 32px; transition: transform 0.3s; }
+    .skill-card:hover { border-color: var(--primary); transform: translateY(-6px) !important; box-shadow: 0 12px 30px rgba(37,99,235,0.1); }
+    .skill-icon { width: 36px; height: 36px; margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center; }
+    .skill-icon svg { width: 28px; height: 28px; transition: transform 0.3s; }
     .skill-card:hover .skill-icon svg { transform: scale(1.15); }
-    .skill-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .skill-name { font-size: 0.76rem; font-weight: 600; }
 
-    /* Certifications */
-    .certs-grid {
-      display: grid; gap: 0.75rem;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
+    /* Certs */
+    .certs-grid { display: grid; gap: 0.7rem; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
     .cert-card {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1rem 1.25rem;
+      border-radius: 12px; padding: 0.9rem 1.1rem;
       transition: all 0.3s;
       opacity: 0; transform: translateY(15px);
-      display: flex; align-items: center; gap: 0.9rem;
+      display: flex; align-items: center; gap: 0.8rem;
       box-shadow: var(--shadow);
     }
     .cert-card.visible { opacity: 1; transform: translateY(0); }
-    .cert-card:hover {
-      border-color: var(--primary); transform: translateY(-3px) !important;
-      box-shadow: var(--shadow-md);
-    }
-    .cert-icon {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: var(--primary-light); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary); font-size: 1.1rem; font-weight: 700;
-    }
-    .cert-name { font-size: 0.85rem; font-weight: 500; line-height: 1.4; color: var(--text); }
+    .cert-card:hover { border-color: var(--primary); transform: translateY(-3px) !important; box-shadow: var(--shadow-md); }
+    .cert-icon { width: 32px; height: 32px; flex-shrink: 0; background: var(--primary-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1rem; font-weight: 700; }
+    .cert-name { font-size: 0.82rem; font-weight: 500; line-height: 1.4; }
 
     /* Contact */
     .contact-section { text-align: center; }
-    .contact-cards {
-      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-      margin-top: 2rem;
-    }
+    .contact-cards { display: flex; justify-content: center; gap: 0.9rem; flex-wrap: wrap; margin-top: 2rem; }
     .contact-card {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding: 1rem 1.5rem; border-radius: 14px;
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.9rem 1.25rem; border-radius: 14px;
       background: var(--bg-card); border: 1px solid var(--border);
       text-decoration: none; color: var(--text);
       transition: all 0.3s; box-shadow: var(--shadow);
     }
-    .contact-card:hover {
-      border-color: var(--primary); transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .contact-card-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: var(--primary-light); display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .contact-card-label { font-size: 0.72rem; color: var(--text-muted); text-align: left; }
-    .contact-card-value { font-size: 0.88rem; font-weight: 600; text-align: left; }
+    .contact-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .contact-card-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .contact-card-label { font-size: 0.7rem; color: var(--text-muted); text-align: left; }
+    .contact-card-value { font-size: 0.85rem; font-weight: 600; text-align: left; }
 
     /* Footer */
-    footer {
-      text-align: center; padding: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted); font-size: 0.82rem; background: var(--bg-card);
-    }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; background: var(--bg-card); }
 
-    /* Scroll animations base */
-    .fade-up {
-      opacity: 0; transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* Responsive */
     @media (max-width: 768px) {
       section { padding: 3rem 1.25rem; }
       nav { top: 0.5rem; padding: 0.5rem 1rem; width: 95%; border-radius: 14px; }
@@ -385,18 +302,15 @@
       .timeline-item { padding-left: 48px; }
       .timeline-line { left: 18px; }
       .timeline-dot { left: 10px; width: 16px; height: 16px; }
-      .timeline-card { padding: 1.25rem; }
-      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.75rem; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 0.65rem; }
+      .skill-card { padding: 1rem 0.4rem; }
       .certs-grid { grid-template-columns: 1fr; }
       .stats-bar { gap: 1rem; }
-      .hero-avatar { width: 90px; height: 90px; font-size: 2.25rem; }
+      .hero-avatar { width: 90px; height: 90px; font-size: 2rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -408,7 +322,6 @@
     <div class="particle"></div><div class="particle"></div>
   </div>
 
-  <!-- Nav -->
   <nav id="navbar">
     <div class="nav-inner">
       <div class="nav-logo">SV</div>
@@ -421,8 +334,7 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="hero-content">
       <div class="hero-avatar">SV</div>
       <div class="hero-greeting"><span>👋</span> Hello, I'm</div>
@@ -434,14 +346,10 @@
         Currently at <strong style="color:var(--accent)">Target (Roundel)</strong>.
       </p>
       <div class="hero-badges">
-        <span class="hero-badge">GCP</span>
-        <span class="hero-badge">Databricks</span>
-        <span class="hero-badge">Spark</span>
-        <span class="hero-badge">PySpark</span>
-        <span class="hero-badge">Scala</span>
-        <span class="hero-badge">Kafka</span>
-        <span class="hero-badge">BigQuery</span>
-        <span class="hero-badge">Gen AI</span>
+        <span class="hero-badge">GCP</span><span class="hero-badge">Databricks</span>
+        <span class="hero-badge">Spark</span><span class="hero-badge">PySpark</span>
+        <span class="hero-badge">Scala</span><span class="hero-badge">Kafka</span>
+        <span class="hero-badge">BigQuery</span><span class="hero-badge">Gen AI</span>
       </div>
       <div class="hero-actions">
         <a href="#experience" class="btn btn-primary">View Experience ↓</a>
@@ -456,7 +364,6 @@
     </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience">
     <div class="section-label">Career</div>
     <h2 class="section-title">/<span>Experience</span></h2>
@@ -480,9 +387,7 @@
             <li>DevOps & Security Automation – Improved CI/CD pipelines and built automated SCA/SCE remediation workflows.</li>
             <li>Cloud Migration to GCP – Leading migration of segmentation tools to GCP with BigQuery, GCS, Cloud Functions, Terraform.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>GCP</span><span>BigQuery</span><span>GPT-4</span><span>Gemini</span><span>React</span><span>Terraform</span><span>Kubernetes</span><span>TypeScript</span>
-          </div>
+          <div class="timeline-tech"><span>GCP</span><span>BigQuery</span><span>GPT-4</span><span>Gemini</span><span>React</span><span>Terraform</span><span>Kubernetes</span><span>TypeScript</span></div>
         </div>
       </div>
 
@@ -497,16 +402,14 @@
             <div class="timeline-date">Apr 2019 — Apr 2025 · Austin, TX</div>
           </div>
           <ul class="timeline-details">
-            <li>Enhanced Data Matching Accuracy – Led external identification initiatives, increasing match rates by 20% for precise customer targeting.</li>
-            <li>Vendor Ecosystem Integration – Integrated LiveRamp, Neustar, Xander, TTD, Google for expanded targeting capabilities.</li>
+            <li>Enhanced Data Matching Accuracy – Led external identification initiatives increasing match rates by 20%.</li>
+            <li>Vendor Ecosystem Integration – Integrated LiveRamp, Neustar, Xander, TTD, Google for expanded targeting.</li>
             <li>Ad Targeting Optimization – Leveraged CleanRooms and Signal Sharing for 15% boost in campaign effectiveness.</li>
-            <li>Data Pipeline & ETL Development – Designed scalable real-time and batch pipelines with PySpark and Scala.</li>
+            <li>Data Pipeline & ETL – Designed scalable real-time and batch pipelines with PySpark and Scala.</li>
             <li>Microservices & Containerization – Architected microservices deployed via Docker and Kubernetes.</li>
             <li>Automation – Automated high-volume workflows using Python and Scala, reducing manual intervention.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>PySpark</span><span>Scala</span><span>Databricks</span><span>Kafka</span><span>Docker</span><span>Kubernetes</span><span>LiveRamp</span><span>Python</span>
-          </div>
+          <div class="timeline-tech"><span>PySpark</span><span>Scala</span><span>Databricks</span><span>Kafka</span><span>Docker</span><span>Kubernetes</span><span>LiveRamp</span><span>Python</span></div>
         </div>
       </div>
 
@@ -527,9 +430,7 @@
             <li>Business Intelligence – Designed DOMO dashboards tracking key business metrics.</li>
             <li>High-Performance Analytics – Leveraged BigQuery for near real-time insights at scale.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>BigQuery</span><span>Druid</span><span>Kafka</span><span>Spark</span><span>DOMO</span><span>StreamSets</span><span>Jupyter</span>
-          </div>
+          <div class="timeline-tech"><span>BigQuery</span><span>Druid</span><span>Kafka</span><span>Spark</span><span>DOMO</span><span>StreamSets</span><span>Jupyter</span></div>
         </div>
       </div>
 
@@ -538,21 +439,19 @@
         <div class="timeline-card">
           <div class="timeline-header">
             <div class="timeline-top">
-              <div class="timeline-role">Senior Marketing Analyst / Senior Data Engineer</div>
+              <div class="timeline-role">Senior Marketing Analyst / Sr Data Engineer</div>
               <div class="timeline-company">Target</div>
             </div>
             <div class="timeline-date">Jun 2016 — Sep 2017 · Minneapolis, MN</div>
           </div>
           <ul class="timeline-details">
-            <li>Data Lake Engineering – Designed enterprise-scale data lake pipelines on GCP and AWS S3.</li>
+            <li>Data Lake Engineering – Enterprise-scale data lake pipelines on GCP and AWS S3.</li>
             <li>Predictive Modeling – Built analytics modules for audience forecasting and churn prediction.</li>
-            <li>CI/CD & Orchestration – Jenkins pipelines, Oozie, Airflow, Docker, Kubernetes automation.</li>
-            <li>Search Marketing – Managed Google AdWords campaigns, improving CTR and conversions.</li>
-            <li>Data Visualization – Interactive DOMO and Tableau dashboards for campaign performance tracking.</li>
+            <li>CI/CD & Orchestration – Jenkins, Oozie, Airflow, Docker, Kubernetes automation.</li>
+            <li>Search Marketing – Managed Google AdWords campaigns improving CTR and conversions.</li>
+            <li>Dashboards – Interactive DOMO and Tableau dashboards for campaign performance tracking.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>GCP</span><span>AWS</span><span>Hive</span><span>Spark</span><span>Oozie</span><span>Jenkins</span><span>Tableau</span><span>Airflow</span>
-          </div>
+          <div class="timeline-tech"><span>GCP</span><span>AWS</span><span>Hive</span><span>Spark</span><span>Oozie</span><span>Jenkins</span><span>Tableau</span><span>Airflow</span></div>
         </div>
       </div>
 
@@ -567,15 +466,13 @@
             <div class="timeline-date">Feb 2015 — May 2016 · New York City Metro</div>
           </div>
           <ul class="timeline-details">
-            <li>Enterprise Data Lake – Hadoop-based pipelines (Sqoop, Hive, Spark, Kafka, Storm, HBase, Solr, Impala).</li>
+            <li>Enterprise Data Lake – Hadoop pipelines (Sqoop, Hive, Spark, Kafka, Storm, HBase, Solr, Impala).</li>
             <li>Recommendation Engine – Enhanced wealth management recommendation components.</li>
             <li>Machine Learning – Applied K-Means Clustering for client segmentation.</li>
             <li>Dashboards – QlikView for portfolio performance, risk analysis, client segmentation.</li>
             <li>CI/CD – Jenkins and TeamCity for automated build, test, and deployment.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>Hadoop</span><span>Spark</span><span>Kafka</span><span>HBase</span><span>QlikView</span><span>K-Means</span><span>Teradata</span>
-          </div>
+          <div class="timeline-tech"><span>Hadoop</span><span>Spark</span><span>Kafka</span><span>HBase</span><span>QlikView</span><span>K-Means</span><span>Teradata</span></div>
         </div>
       </div>
 
@@ -593,164 +490,39 @@
             <li>Built "Know Your Medicine" iOS app for symptom-based medicine lookup and doctor recommendations.</li>
             <li>Integrated FDA APIs for real-time medical data and geolocation for nearby provider search.</li>
           </ul>
-          <div class="timeline-tech">
-            <span>iOS</span><span>Swift</span><span>Java</span><span>SQL</span><span>REST APIs</span>
-          </div>
+          <div class="timeline-tech"><span>iOS</span><span>Swift</span><span>Java</span><span>SQL</span><span>REST APIs</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <div class="section-label">Expertise</div>
     <h2 class="section-title">/<span>Skills</span></h2>
     <div class="skills-grid">
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#4285F4"/><path d="M2 17l10 5 10-5" fill="#4285F4" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#4285F4" opacity="0.85"/></svg>
-        </div>
-        <div class="skill-name">GCP</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#669DF6"/><path d="M8 8h3v8H8z" fill="#fff"/><path d="M13 12h3v4h-3z" fill="#fff"/></svg>
-        </div>
-        <div class="skill-name">BigQuery</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#E25A1C"/><path d="M8 8h8v2H8zm0 3h8v2H8zm0 3h5v2H8z" fill="#fff"/></svg>
-        </div>
-        <div class="skill-name">Databricks</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 12l10 10 10-10L12 2z" fill="#DC322F"/><path d="M7 12l2-2 3 3 5-5 2 2-7 7-5-5z" fill="#fff"/></svg>
-        </div>
-        <div class="skill-name">Scala</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L10 7H3l5 4-2 6 6-3.5L18 17l-2-6 5-4h-7L12 2z" fill="#3776AB"/></svg>
-        </div>
-        <div class="skill-name">Python</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#E25A1C"/><path d="M2 17l10 5 10-5" fill="#E25A1C" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#E25A1C" opacity="0.85"/></svg>
-        </div>
-        <div class="skill-name">PySpark</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#E25A1C"/><path d="M2 17l10 5 10-5" fill="#E25A1C" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#E25A1C" opacity="0.85"/></svg>
-        </div>
-        <div class="skill-name">Spark</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#231F20"/><path d="M7 7h3v10H7zm7 0h3v10h-3zM5 12h14" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
-        </div>
-        <div class="skill-name">Kafka</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#2496ED"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2"/></svg>
-        </div>
-        <div class="skill-name">Docker</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#326CE5"/><path d="M12 4l8 12H4l8-12z" fill="#fff" opacity="0.9"/><path d="M12 8l5 8H7l5-8z" fill="#326CE5"/></svg>
-        </div>
-        <div class="skill-name">Kubernetes</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3L3 8v8l5 5h8l5-5V8l-5-5H8z" fill="#7B42BC"/><path d="M12 7v10M7 12h10" stroke="#fff" stroke-width="1.5"/></svg>
-        </div>
-        <div class="skill-name">Terraform</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3V3z" fill="#4285F4" opacity="0.15"/><path d="M12 3v18M3 12h18" stroke="#4285F4" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="#4285F4"/></svg>
-        </div>
-        <div class="skill-name">Gen AI</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3L3 8v8l5 5h8l5-5V8l-5-5H8z" fill="#FDEE21" opacity="0.2"/><path d="M8 3L3 8v8l5 5h8l5-5V8l-5-5H8z" stroke="#FDEE21" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#FDEE21">H</text></svg>
-        </div>
-        <div class="skill-name">Hive</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#29F1FB" opacity="0.15"/><circle cx="12" cy="12" r="10" stroke="#29F1FB" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="bold" fill="#29F1FB">D</text></svg>
-        </div>
-        <div class="skill-name">Druid</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" fill="#FF9900" opacity="0.1"/><path d="M4 4h16v16H4V4z" stroke="#FF9900" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="bold" fill="#FF9900">AWS</text></svg>
-        </div>
-        <div class="skill-name">AWS</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#0078D4" opacity="0.15"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#0078D4" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#0078D4">AZ</text></svg>
-        </div>
-        <div class="skill-name">Azure</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="skill-name">Trino</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" fill="#E6522C" opacity="0.15"/><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#E6522C" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="#E6522C">PROM</text></svg>
-        </div>
-        <div class="skill-name">Prometheus</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" fill="#F46800" opacity="0.15"/><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#F46800" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#F46800">GRF</text></svg>
-        </div>
-        <div class="skill-name">Grafana</div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3V3z" fill="#D24939" opacity="0.15"/><path d="M3 3h18v18H3V3z" stroke="#D24939" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="#D24939">JENK</text></svg>
-        </div>
-        <div class="skill-name">Jenkins</div>
-      </div>
-
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#4285F4"/><path d="M2 17l10 5 10-5" fill="#4285F4" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#4285F4" opacity="0.85"/></svg></div><div class="skill-name">GCP</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#669DF6"/><path d="M8 8h3v8H8z" fill="#fff"/><path d="M13 12h3v4h-3z" fill="#fff"/></svg></div><div class="skill-name">BigQuery</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#E25A1C"/><path d="M8 8h8v2H8zm0 3h8v2H8zm0 3h5v2H8z" fill="#fff"/></svg></div><div class="skill-name">Databricks</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 12l10 10 10-10L12 2z" fill="#DC322F"/><path d="M7 12l2-2 3 3 5-5 2 2-7 7-5-5z" fill="#fff"/></svg></div><div class="skill-name">Scala</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l-2 5H3l5 4-2 6 6-3.5L18 17l-2-6 5-4h-7L12 2z" fill="#3776AB"/></svg></div><div class="skill-name">Python</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#E25A1C"/><path d="M2 17l10 5 10-5" fill="#E25A1C" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#E25A1C" opacity="0.85"/></svg></div><div class="skill-name">PySpark</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#E25A1C"/><path d="M2 17l10 5 10-5" fill="#E25A1C" opacity="0.7"/><path d="M2 12l10 5 10-5" fill="#E25A1C" opacity="0.85"/></svg></div><div class="skill-name">Spark</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#231F20"/><path d="M7 7h3v10H7zm7 0h3v10h-3z" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div><div class="skill-name">Kafka</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#2496ED"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2"/></svg></div><div class="skill-name">Docker</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#326CE5"/><path d="M12 4l8 12H4l8-12z" fill="#fff" opacity="0.9"/><path d="M12 8l5 8H7l5-8z" fill="#326CE5"/></svg></div><div class="skill-name">Kubernetes</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 3L3 8v8l5 5h8l5-5V8l-5-5H8z" fill="#7B42BC"/><path d="M12 7v10M7 12h10" stroke="#fff" stroke-width="1.5"/></svg></div><div class="skill-name">Terraform</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3V3z" fill="#4285F4" opacity="0.15"/><circle cx="12" cy="12" r="3" fill="#4285F4"/></svg></div><div class="skill-name">Gen AI</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FF9900" opacity="0.12"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#FF9900" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#FF9900">AWS</text></svg></div><div class="skill-name">AWS</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#0078D4" opacity="0.12"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#0078D4" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="#0078D4">AZ</text></svg></div><div class="skill-name">Azure</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#FDEE21" opacity="0.15"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#FDEE21" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#FDEE21" opacity="0.8">H</text></svg></div><div class="skill-name">Hive</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#29F1FB" opacity="0.1"/><circle cx="12" cy="12" r="10" stroke="#29F1FB" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#29F1FB">D</text></svg></div><div class="skill-name">Druid</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#D24939" opacity="0.1"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#D24939" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="#D24939">J</text></svg></div><div class="skill-name">Jenkins</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#F46800" opacity="0.1"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#F46800" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="#F46800">G</text></svg></div><div class="skill-name">Grafana</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#E6522C" opacity="0.1"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="#E6522C" stroke-width="1.5" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="6" font-weight="bold" fill="#E6522C">PROM</text></svg></div><div class="skill-name">Prometheus</div></div>
+      <div class="skill-card"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="skill-name">Trino</div></div>
     </div>
   </section>
 
-  <!-- Certifications -->
   <section id="certifications">
     <div class="section-label">Credentials</div>
     <h2 class="section-title">/<span>Certifications</span></h2>
@@ -768,11 +540,10 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="contact-section">
     <div class="section-label">Connect</div>
     <h2 class="section-title">/<span>Get In Touch</span></h2>
-    <p style="color:var(--text-secondary); max-width:500px; margin: 0 auto;">
+    <p style="color:var(--text-secondary); max-width:500px; margin: 0 auto; font-size:0.9rem;">
       Open to discussing data engineering challenges, AdTech opportunities, or anything cloud and big data related.
     </p>
     <div class="contact-cards">
@@ -796,45 +567,31 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Srujan Vancha. Built with <span style="color:#ef4444;">&hearts;</span> + automation.</p>
+    <p><img src="https://github.com/vanchasrujankumar/vanchasrujankumar.github.io/actions/workflows/deploy.yml/badge.svg" alt="Deploy" style="vertical-align:middle; margin-right:8px;"> &copy; 2025 Srujan Vancha. Built with automation.</p>
   </footer>
 
   <script>
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.timeline-item, .skill-card, .cert-card, .fade-up').forEach(el => observer.observe(el));
-
-    // Stagger delays
+    const observer = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }); }, { threshold: 0.08 });
+    document.querySelectorAll('.timeline-item, .skill-card, .cert-card').forEach(el => observer.observe(el));
     document.querySelectorAll('.timeline-item').forEach((el, i) => el.style.transitionDelay = (i * 0.08) + 's');
     document.querySelectorAll('.skill-card').forEach((el, i) => el.style.transitionDelay = (i * 0.03) + 's');
     document.querySelectorAll('.cert-card').forEach((el, i) => el.style.transitionDelay = (i * 0.04) + 's');
 
-    // Navbar hide/show
     let lastScroll = 0;
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       const cur = window.scrollY;
       nav.classList.toggle('hidden', cur > lastScroll && cur > 150);
-      nav.classList.toggle('scrolled', cur > 50);
       lastScroll = cur;
     });
 
-    // Animated counters
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = parseInt(el.dataset.target);
+    const counterObs = new IntersectionObserver(e => {
+      e.forEach(x => {
+        if (!x.isIntersecting) return;
+        const el = x.target, target = parseInt(el.dataset.target);
         let cur = 0;
         const step = Math.ceil(target / 35);
-        const timer = setInterval(() => {
-          cur += step;
-          if (cur >= target) { cur = target; clearInterval(timer); }
-          el.textContent = cur + '+';
-        }, 35);
+        const timer = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(timer); } el.textContent = cur + '+'; }, 35);
         counterObs.unobserve(el);
       });
     }, { threshold: 0.5 });
